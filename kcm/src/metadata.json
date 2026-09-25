@@ -1,0 +1,19 @@
+{
+    "KPlugin": {
+        "Name": "Default Name",
+        "Description": "Default Description",
+        "Version": "0.1.0",
+        "Authors": [
+            {
+                "Name": "limuy"
+            },
+            {
+                "Name": "dubbyzhong"
+            }
+        ],
+        "Category": "Default Category"
+    },
+    "X-KDE-FormFactors": [
+        "desktop"
+    ]
+}
