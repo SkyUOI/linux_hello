@@ -1,0 +1,16 @@
+[package]
+name = "kcm"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+cxx = "1.0.202"
+cxx-qt = "0.10.0"
+cxx-kde-frameworks = { git = "https://invent.kde.org/libraries/cxx-kde-frameworks.git" }
+
+[build-dependencies]
+cmake-package = "0.2.0"
+cxx-qt-build = "0.10.0"

@@ -1,6 +1,19 @@
-[package]
-name = "linux_hello"
+[workspace]
+resolver = "3"
+members = [
+    "pam",
+    "gui",
+    "kernel",
+    "kcm"
+]
+
+[workspace.package]
 version = "0.1.0"
 edition = "2024"
 
-[dependencies]
+[workspace.dependencies]
+anyhow = "1.0.104"
+pam = "0.8.0"
+thiserror = "2.0.21"
+tss-esapi = "7.7.0"
+ultralytics-inference = "0.0.48"
