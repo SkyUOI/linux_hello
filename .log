@@ -391,3 +391,23 @@
 [32m[2026-09-27 18:35:06.593 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
 [32m[2026-09-27 18:35:06.593 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
 [32m[2026-09-27 18:35:06.594 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-27 19:56:50.467 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 19:56:50.629 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 19:56:50.629 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 19:56:50.630 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-27 19:56:55.735 +08:00 INFO kcm/src/log_manager.rs:89] camera is inactive[0m
+[32m[2026-09-27 19:56:58.173 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 19:57:00.384 +08:00 INFO kcm/src/log_manager.rs:89] camera is inactive[0m
+[32m[2026-09-27 19:57:01.361 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 21:52:24.580 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 21:52:24.747 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 21:52:24.748 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 21:52:24.749 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-27 21:57:22.604 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 21:57:22.730 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 21:57:22.731 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 21:57:22.731 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-27 21:57:33.506 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 21:57:33.663 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 21:57:33.664 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 21:57:33.665 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m

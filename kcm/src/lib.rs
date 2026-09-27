@@ -3,8 +3,11 @@ use qobject::{KPluginMetaData, QObject};
 mod camera;
 mod config;
 mod env_vars;
+mod frame_processor;
 mod kcm;
 mod log_manager;
+
+pub use frame_processor::relay_frame;
 
 #[cxx_qt::bridge]
 pub mod qobject {
@@ -17,6 +20,15 @@ pub mod qobject {
 
         include!("cxx-qt-lib/qstring.h");
         type QString = cxx_qt_lib::QString;
+
+        include!("kcm/src/video_relay.h");
+        #[namespace = "kcm_video_relay"]
+        #[cxx_name = "attach"]
+        unsafe fn video_relay_attach(sink: *mut QObject, interval_ms: u32);
+    }
+
+    extern "Rust" {
+        fn relay_frame(width: i32, height: i32, stride: i32, data: &[u8]);
     }
 
     unsafe extern "RustQt" {
@@ -79,6 +91,16 @@ pub mod qobject {
         fn report_info_message(self: &LogManager, message: QString);
     }
 
+    unsafe extern "RustQt" {
+        #[qobject]
+        #[qml_element]
+        type FrameProcessor = super::FrameProcessorRust;
+
+        #[cxx_name = "attachFrameSink"]
+        #[qinvokable]
+        fn attach_frame_sink(self: Pin<&mut FrameProcessor>, sink: *mut QObject);
+    }
+
     impl
         cxx_qt::Constructor<
             (*mut QObject, KPluginMetaData),
@@ -89,7 +111,6 @@ pub mod qobject {
 }
 
 pub type KcmRust = kcm::Kcm;
-
 pub type CameraManagerRust = camera::CameraManager;
-
 pub type LogManagerRust = log_manager::LogManager;
+pub type FrameProcessorRust = frame_processor::FrameProcessor;

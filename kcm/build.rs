@@ -8,7 +8,7 @@ use std::{
 use cxx_qt_build::CppFile;
 
 fn main() -> process::ExitCode {
-    let include_dirs = match kf6_include_dirs() {
+    let include_dirs = match kcm_include_dirs() {
         Ok(include_dirs) => include_dirs,
         Err(e) => {
             println!("cargo::error=build.rs failed: {e}");
@@ -56,6 +56,9 @@ fn main() -> process::ExitCode {
         println!("cargo::rustc-link-arg=-Wl,--undefined={symbol}")
     }
 
+    // println!("cargo::rustc-link-arg=-lQt6Multimedia");
+    println!("cargo::rustc-link-arg=-lQt6Multimedia");
+
     if let Err(e) = exports_file.write(version_script.as_bytes()) {
         println!("cargo::error=build.rs failed: {e}");
         return ExitCode::FAILURE;
@@ -81,6 +84,25 @@ fn kf6_include_dirs() -> Result<Vec<String>, &'static str> {
                 .ok_or("KF6::KCMUtilsQuick doesn't exist in KF6KCMUtils")
         })
         .map(|target| target.include_directories)
+}
+
+fn qt6_multimedia_include_dirs() -> Result<Vec<String>, &'static str> {
+    cmake_package::find_package("Qt6Multimedia")
+        .find()
+        .map_err(|_| "Couldn't find Qt6Multimedia, please install it")
+        .and_then(|package| {
+            package
+                .target("Qt6::Multimedia")
+                .ok_or("Qt6::Multimedia doesn't exist in Qt6Multimedia")
+        })
+        .map(|target| target.include_directories)
+}
+
+fn kcm_include_dirs() -> Result<Vec<String>, &'static str> {
+    let mut kf6_dirs = kf6_include_dirs()?;
+    let multimedia_dirs = qt6_multimedia_include_dirs()?;
+    kf6_dirs.extend_from_slice(&multimedia_dirs);
+    Ok(kf6_dirs)
 }
 
 const KCM_EXPORT_SYMBOLS: &[&str] = &["qt_plugin_instance", "qt_plugin_query_metadata_v2"];

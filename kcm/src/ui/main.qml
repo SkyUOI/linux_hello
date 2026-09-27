@@ -17,6 +17,7 @@ KCM.SimpleKCM {
 
         logManager.init(kcm);
         cameraManager.init(kcm);
+        frameProcessor.attachFrameSink(video.videoSink);
 
         root.syncDevices();
 
@@ -36,6 +37,8 @@ KCM.SimpleKCM {
     }
 
     readonly property LogManager logManager: LogManager {}
+
+    readonly property FrameProcessor frameProcessor: FrameProcessor {}
 
     Connections {
         target: kcm
