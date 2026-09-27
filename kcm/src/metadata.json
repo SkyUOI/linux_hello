@@ -1,7 +1,7 @@
 {
     "KPlugin": {
-        "Name": "Default Name",
-        "Description": "Default Description",
+        "Name": "KCM Linux Hello",
+        "Description": "for face identification",
         "Version": "0.1.0",
         "Authors": [
             {
@@ -11,7 +11,7 @@
                 "Name": "dubbyzhong"
             }
         ],
-        "Category": "Default Category"
+        "Category": "faceID"
     },
     "X-KDE-FormFactors": [
         "desktop"

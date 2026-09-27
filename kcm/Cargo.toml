@@ -10,6 +10,15 @@ crate-type = ["cdylib"]
 cxx = "1.0.202"
 cxx-qt = "0.10.0"
 cxx-kde-frameworks = { git = "https://invent.kde.org/libraries/cxx-kde-frameworks.git" }
+dirs = "7.0.0"
+serde = { version = "1.0.229", features = ["derive"] }
+toml = "1.1.6"
+thiserror.workspace = true
+cxx-qt-lib = "0.10.0"
+log = "0.4.34"
+fern = { version = "0.7.1", features = ["colored"] }
+jiff = "0.2.37"
+udev = "0.9.3"
 
 [build-dependencies]
 cmake-package = "0.2.0"

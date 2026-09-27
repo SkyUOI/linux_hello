@@ -1,5 +1,11 @@
 use qobject::{KPluginMetaData, QObject};
 
+mod camera;
+mod config;
+mod env_vars;
+mod kcm;
+mod log_manager;
+
 #[cxx_qt::bridge]
 pub mod qobject {
     unsafe extern "C++" {
@@ -9,48 +15,81 @@ pub mod qobject {
         include!("cxx-kde-frameworks/kpluginmetadata.h");
         type KPluginMetaData = cxx_kde_frameworks::kcoreaddons::KPluginMetaData;
 
-        type QObject = cxx_qt::QObject;
+        include!("cxx-qt-lib/qstring.h");
+        type QString = cxx_qt_lib::QString;
     }
 
     unsafe extern "RustQt" {
         #[qobject]
         #[base = KQuickConfigModule]
-        type DefaultObject = super::DefaultObjectRust;
+        type Kcm = super::KcmRust;
 
+        #[qinvokable(cxx_override, cxx_virtual)]
+        fn save(self: Pin<&mut Kcm>);
+
+        #[qinvokable(cxx_override, cxx_virtual)]
+        fn load(self: Pin<&mut Kcm>);
+
+        #[qsignal]
+        fn saved(self: Pin<&mut Kcm>);
+
+        #[qsignal]
+        fn loaded(self: Pin<&mut Kcm>);
+
+    }
+
+    unsafe extern "RustQt" {
+        #[qobject]
+        #[qml_element]
+        #[qproperty(bool, running)]
+        #[qproperty(bool, mirrored)]
+        type CameraManager = super::CameraManagerRust;
+
+        #[cxx_name = "currentDeviceId"]
+        #[qinvokable]
+        fn current_device_id(self: Pin<&mut CameraManager>) -> QString;
+
+        #[cxx_name = "setDevice"]
+        #[qinvokable]
+        fn set_device(self: Pin<&mut CameraManager>, device_id: QString);
+
+        #[qinvokable]
+        fn init(self: Pin<&mut CameraManager>, kcm: *const Kcm);
+
+        #[cxx_name = "saveConfig"]
+        #[qinvokable]
+        fn save_config(self: &CameraManager);
+    }
+
+    unsafe extern "RustQt" {
+
+        #[qobject]
+        #[qml_element]
+        type LogManager = super::LogManagerRust;
+
+        #[qinvokable]
+        fn init(self: Pin<&mut LogManager>, kcm: *const Kcm);
+
+        #[cxx_name = "reportErrorMessage"]
+        #[qinvokable]
+        fn report_error_message(self: &LogManager, message: QString);
+
+        #[cxx_name = "reportInfoMessage"]
+        #[qinvokable]
+        fn report_info_message(self: &LogManager, message: QString);
     }
 
     impl
         cxx_qt::Constructor<
             (*mut QObject, KPluginMetaData),
             BaseArguments = (*mut QObject, KPluginMetaData),
-        > for DefaultObject
+        > for Kcm
     {
     }
 }
 
-#[derive(Default)]
-pub struct DefaultObjectRust {}
+pub type KcmRust = kcm::Kcm;
 
-impl cxx_qt::Constructor<(*mut qobject::QObject, qobject::KPluginMetaData)>
-    for qobject::DefaultObject
-{
-    type NewArguments = ();
+pub type CameraManagerRust = camera::CameraManager;
 
-    type BaseArguments = (*mut qobject::QObject, qobject::KPluginMetaData);
-
-    type InitializeArguments = ();
-
-    fn route_arguments(
-        arguments: Self::BaseArguments,
-    ) -> (
-        Self::NewArguments,
-        Self::BaseArguments,
-        Self::InitializeArguments,
-    ) {
-        ((), arguments, ())
-    }
-
-    fn new(_arguments: Self::NewArguments) -> <Self as cxx_qt::CxxQtType>::Rust {
-        DefaultObjectRust {}
-    }
-}
+pub type LogManagerRust = log_manager::LogManager;

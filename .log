@@ -1,0 +1,393 @@
+[32m[2026-09-27 08:29:56.969 +08:00 INFO kcm/src/log_manager.rs:88] log manager has been load successfully[0m
+[32m[2026-09-27 08:29:57.091 +08:00 INFO kcm/src/camera.rs:142] set device successfully with id '/dev/video0'[0m
+[32m[2026-09-27 08:32:29.104 +08:00 INFO kcm/src/log_manager.rs:86] log manager has been load successfully[0m
+[32m[2026-09-27 08:34:41.585 +08:00 INFO kcm/src/log_manager.rs:86] log manager has been load successfully[0m
+[32m[2026-09-27 08:37:36.738 +08:00 INFO kcm/src/log_manager.rs:86] log manager has been load successfully[0m
+[32m[2026-09-27 08:37:36.743 +08:00 INFO kcm/src/camera.rs:174] camera manager has been load successfully[0m
+[32m[2026-09-27 08:37:36.879 +08:00 INFO kcm/src/camera.rs:142] set device successfully with id '/dev/video0'[0m
+[32m[2026-09-27 08:39:08.659 +08:00 INFO kcm/src/log_manager.rs:86] log manager has been load successfully[0m
+[32m[2026-09-27 08:39:08.670 +08:00 INFO kcm/src/camera.rs:174] camera manager has been load successfully[0m
+[32m[2026-09-27 08:39:08.778 +08:00 INFO kcm/src/camera.rs:142] set device successfully with id '/dev/video0'[0m
+[32m[2026-09-27 08:40:39.923 +08:00 INFO kcm/src/log_manager.rs:86] log manager has been load successfully[0m
+[32m[2026-09-27 08:40:39.924 +08:00 INFO kcm/src/camera.rs:174] camera manager has been load successfully[0m
+[32m[2026-09-27 08:40:40.033 +08:00 INFO kcm/src/camera.rs:142] set device successfully with id '/dev/video0'[0m
+[32m[2026-09-27 08:41:01.744 +08:00 INFO kcm/src/log_manager.rs:86] log manager has been load successfully[0m
+[32m[2026-09-27 08:41:01.748 +08:00 INFO kcm/src/camera.rs:174] camera manager has been load successfully[0m
+[32m[2026-09-27 08:41:01.854 +08:00 INFO kcm/src/camera.rs:142] set device successfully with id '/dev/video0'[0m
+[32m[2026-09-27 13:25:28.978 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 13:25:28.980 +08:00 INFO kcm/src/camera.rs:169] camera manager has been load successfully[0m
+[32m[2026-09-27 13:25:29.086 +08:00 INFO kcm/src/camera.rs:141] set device successfully with id '/dev/video0'[0m
+[32m[2026-09-27 13:25:31.645 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 13:25:31.645 +08:00 INFO kcm/src/camera.rs:173] camera manager starts to save configuration[0m
+[32m[2026-09-27 13:25:31.646 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 13:26:50.133 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 13:26:50.135 +08:00 INFO kcm/src/camera.rs:169] camera manager has been load successfully[0m
+[32m[2026-09-27 13:26:56.577 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 13:26:56.577 +08:00 INFO kcm/src/camera.rs:173] camera manager starts to save configuration[0m
+[32m[2026-09-27 13:26:56.578 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 13:28:37.750 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 13:28:37.754 +08:00 INFO kcm/src/camera.rs:169] camera manager has been load successfully[0m
+[32m[2026-09-27 13:28:37.870 +08:00 INFO kcm/src/camera.rs:141] set device successfully with id '/dev/video0'[0m
+[32m[2026-09-27 13:53:03.468 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 13:53:03.469 +08:00 INFO kcm/src/camera.rs:182] camera manager has been load successfully[0m
+[32m[2026-09-27 13:53:05.142 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 13:53:05.142 +08:00 INFO kcm/src/camera.rs:186] camera manager starts to save configuration[0m
+[32m[2026-09-27 13:53:05.143 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 14:01:47.178 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:01:47.180 +08:00 INFO kcm/src/camera.rs:182] camera manager has been load successfully[0m
+[32m[2026-09-27 14:01:50.478 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 14:01:50.479 +08:00 INFO kcm/src/camera.rs:186] camera manager starts to save configuration[0m
+[32m[2026-09-27 14:01:50.479 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 14:02:21.937 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:02:21.942 +08:00 INFO kcm/src/camera.rs:182] camera manager has been load successfully[0m
+[32m[2026-09-27 14:09:55.041 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:09:55.044 +08:00 INFO kcm/src/camera.rs:182] camera manager has been load successfully[0m
+[32m[2026-09-27 14:12:36.937 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:12:36.939 +08:00 INFO kcm/src/camera.rs:182] camera manager has been load successfully[0m
+[32m[2026-09-27 14:13:15.709 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:13:15.713 +08:00 INFO kcm/src/camera.rs:182] camera manager has been load successfully[0m
+[32m[2026-09-27 14:15:28.456 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:15:28.458 +08:00 INFO kcm/src/camera.rs:182] camera manager has been load successfully[0m
+[32m[2026-09-27 14:19:57.492 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:19:57.494 +08:00 INFO kcm/src/camera.rs:183] camera manager has been load successfully[0m
+[34m[2026-09-27 14:19:57.614 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:21:51.972 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:21:51.974 +08:00 INFO kcm/src/camera.rs:184] camera manager has been load successfully[0m
+[34m[2026-09-27 14:21:52.085 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:24:04.406 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[34m[2026-09-27 14:24:04.408 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:24:04.408 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[34m[2026-09-27 14:24:04.513 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:25:20.576 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[34m[2026-09-27 14:25:20.578 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[34m[2026-09-27 14:25:20.578 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:25:20.578 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[34m[2026-09-27 14:25:20.686 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:26:13.758 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[34m[2026-09-27 14:26:13.764 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[34m[2026-09-27 14:26:13.764 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:26:13.764 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[34m[2026-09-27 14:26:13.865 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:26:43.060 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[34m[2026-09-27 14:26:43.066 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[34m[2026-09-27 14:26:43.066 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:26:43.066 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[34m[2026-09-27 14:26:43.179 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:26:55.790 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[34m[2026-09-27 14:26:55.899 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:26:55.899 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[34m[2026-09-27 14:26:56.003 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:27:24.131 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[34m[2026-09-27 14:27:24.134 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[34m[2026-09-27 14:27:24.135 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:27:24.135 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[34m[2026-09-27 14:27:24.254 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:28:02.464 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[34m[2026-09-27 14:28:02.466 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[34m[2026-09-27 14:28:02.466 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:28:02.466 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[34m[2026-09-27 14:28:02.566 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:28:30.385 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[34m[2026-09-27 14:28:30.387 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[34m[2026-09-27 14:28:30.387 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[34m[2026-09-27 14:28:30.388 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:28:30.388 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[34m[2026-09-27 14:28:30.499 +08:00 DEBUG kcm/src/camera.rs:116] get_running[0m
+[32m[2026-09-27 14:29:26.298 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[34m[2026-09-27 14:29:26.300 +08:00 DEBUG kcm/src/camera.rs:116] get_running: false[0m
+[34m[2026-09-27 14:29:26.301 +08:00 DEBUG kcm/src/camera.rs:116] get_running: false[0m
+[34m[2026-09-27 14:29:26.301 +08:00 DEBUG kcm/src/camera.rs:116] get_running: false[0m
+[32m[2026-09-27 14:29:26.301 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[34m[2026-09-27 14:29:26.400 +08:00 DEBUG kcm/src/camera.rs:116] get_running: true[0m
+[32m[2026-09-27 14:35:11.780 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:35:11.782 +08:00 INFO kcm/src/camera.rs:190] camera manager has been load successfully[0m
+[32m[2026-09-27 14:38:02.576 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:38:02.734 +08:00 INFO kcm/src/camera.rs:190] camera manager has been load successfully[0m
+[32m[2026-09-27 14:40:23.487 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:40:23.649 +08:00 INFO kcm/src/camera.rs:190] camera manager has been load successfully[0m
+[32m[2026-09-27 14:40:36.248 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:40:36.405 +08:00 INFO kcm/src/camera.rs:190] camera manager has been load successfully[0m
+[32m[2026-09-27 14:45:59.799 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:45:59.961 +08:00 INFO kcm/src/camera.rs:190] camera manager has been load successfully[0m
+[32m[2026-09-27 14:46:48.462 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 14:46:48.619 +08:00 INFO kcm/src/camera.rs:190] camera manager has been load successfully[0m
+[32m[2026-09-27 15:05:22.372 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:05:22.530 +08:00 INFO kcm/src/camera.rs:186] camera manager has been load successfully[0m
+[32m[2026-09-27 15:05:32.303 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 15:05:32.303 +08:00 INFO kcm/src/camera.rs:190] camera manager starts to save configuration[0m
+[32m[2026-09-27 15:05:32.303 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 15:05:55.341 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:05:55.500 +08:00 INFO kcm/src/camera.rs:186] camera manager has been load successfully[0m
+[32m[2026-09-27 15:06:02.581 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 15:06:02.581 +08:00 INFO kcm/src/camera.rs:190] camera manager starts to save configuration[0m
+[32m[2026-09-27 15:06:02.581 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 15:08:33.049 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:08:33.207 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 15:08:37.072 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 15:08:37.072 +08:00 INFO kcm/src/camera.rs:192] camera manager starts to save configuration[0m
+[32m[2026-09-27 15:08:37.072 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 15:08:51.868 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:08:52.026 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 15:08:56.263 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 15:08:56.263 +08:00 INFO kcm/src/camera.rs:192] camera manager starts to save configuration[0m
+[32m[2026-09-27 15:08:56.263 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 15:12:13.436 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:12:13.594 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 15:32:09.906 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:32:10.063 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 15:32:15.621 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 15:32:15.621 +08:00 INFO kcm/src/camera.rs:192] camera manager starts to save configuration[0m
+[32m[2026-09-27 15:32:15.621 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 15:32:33.948 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:32:34.108 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 15:52:25.738 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:52:25.897 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 15:52:28.216 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[34m[2026-09-27 15:52:28.216 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 15:52:32.879 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[34m[2026-09-27 15:52:32.880 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 15:52:34.476 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[34m[2026-09-27 15:52:34.476 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 15:52:37.293 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[34m[2026-09-27 15:52:37.293 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 15:52:38.656 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[34m[2026-09-27 15:52:38.656 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 15:52:42.961 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[34m[2026-09-27 15:52:42.961 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 15:52:45.461 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[34m[2026-09-27 15:52:45.462 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 15:54:35.918 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:54:36.078 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 15:55:04.968 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:55:05.131 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 15:56:19.927 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:56:20.086 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 15:56:20.086 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 15:57:05.873 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:57:06.032 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 15:57:06.032 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 15:57:24.976 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:57:25.134 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 15:57:25.135 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 15:57:26.950 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[34m[2026-09-27 15:57:26.950 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 15:57:31.799 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[34m[2026-09-27 15:57:31.799 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 15:57:41.190 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[34m[2026-09-27 15:57:41.191 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 15:58:52.228 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 15:58:52.385 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 15:58:52.385 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:03:27.116 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:03:27.279 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:03:27.280 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:03:29.487 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[34m[2026-09-27 16:03:29.488 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 16:04:43.350 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:04:43.510 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:04:43.510 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:05:04.064 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[34m[2026-09-27 16:05:04.064 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 16:05:06.919 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 16:05:06.919 +08:00 INFO kcm/src/camera.rs:192] camera manager starts to save configuration[0m
+[32m[2026-09-27 16:05:06.919 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 16:05:36.887 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:05:37.044 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:05:37.045 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:05:47.069 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 16:05:47.069 +08:00 INFO kcm/src/camera.rs:192] camera manager starts to save configuration[0m
+[32m[2026-09-27 16:05:47.069 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 16:05:58.876 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:05:59.033 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:05:59.034 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:09:16.619 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:09:16.778 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:09:16.778 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:09:21.875 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[34m[2026-09-27 16:09:21.875 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 16:09:23.211 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 16:09:23.211 +08:00 INFO kcm/src/camera.rs:192] camera manager starts to save configuration[0m
+[32m[2026-09-27 16:09:23.211 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 16:10:01.503 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:10:01.661 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:10:01.661 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:10:04.149 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[34m[2026-09-27 16:10:04.150 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 16:10:05.851 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[34m[2026-09-27 16:10:05.851 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 16:10:06.940 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 16:10:06.940 +08:00 INFO kcm/src/camera.rs:192] camera manager starts to save configuration[0m
+[32m[2026-09-27 16:10:06.940 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 16:12:14.609 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:12:14.766 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:12:14.767 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:12:17.314 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[34m[2026-09-27 16:12:17.314 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 16:12:18.116 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 16:12:18.116 +08:00 INFO kcm/src/camera.rs:192] camera manager starts to save configuration[0m
+[32m[2026-09-27 16:12:18.117 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 16:12:29.277 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:12:29.434 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:12:29.434 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:13:02.477 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:13:02.700 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:13:02.700 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:15:28.079 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:15:28.302 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:15:28.302 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:20:27.438 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:20:27.662 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:20:27.663 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:21:28.277 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:21:28.435 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:21:28.435 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:22:18.337 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:22:18.494 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:22:18.495 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:25:22.881 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:25:23.039 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:25:23.039 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:26:29.003 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:26:29.161 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:26:29.162 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:29:26.825 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:29:26.828 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:31:32.902 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:31:33.066 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:31:33.066 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:43:19.619 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:43:19.776 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:43:19.777 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:46:48.165 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:46:48.322 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:46:48.322 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:47:56.024 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:47:56.181 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:47:56.181 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:47:58.625 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[34m[2026-09-27 16:47:58.626 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 16:48:03.123 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[34m[2026-09-27 16:48:03.124 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 16:48:03.943 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 16:48:03.944 +08:00 INFO kcm/src/camera.rs:192] camera manager starts to save configuration[0m
+[32m[2026-09-27 16:48:03.944 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 16:48:07.180 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:48:07.337 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:48:07.338 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:50:23.639 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:50:23.798 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:50:23.798 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:50:23.798 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 1[0m
+[32m[2026-09-27 16:50:27.977 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[34m[2026-09-27 16:50:27.977 +08:00 DEBUG kcm/src/camera.rs:159] running_changed[0m
+[32m[2026-09-27 16:50:32.628 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 16:50:32.628 +08:00 INFO kcm/src/camera.rs:192] camera manager starts to save configuration[0m
+[32m[2026-09-27 16:50:32.628 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 16:52:32.084 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:52:32.317 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:52:32.318 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:52:32.319 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-27 16:53:18.851 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:53:19.074 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:53:19.074 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 16:53:19.076 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-27 16:56:52.029 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:56:52.255 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:56:52.255 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[32m[2026-09-27 16:56:52.255 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-27 16:56:54.496 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[32m[2026-09-27 16:56:56.429 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 16:56:56.429 +08:00 INFO kcm/src/camera.rs:191] camera manager starts to save configuration[0m
+[32m[2026-09-27 16:56:56.430 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 16:57:00.797 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 16:57:00.798 +08:00 INFO kcm/src/camera.rs:191] camera manager starts to save configuration[0m
+[32m[2026-09-27 16:57:00.798 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 16:57:05.378 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:57:05.601 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:57:05.601 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[32m[2026-09-27 16:57:05.603 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 1[0m
+[32m[2026-09-27 16:57:12.203 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:57:12.426 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:57:12.426 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[32m[2026-09-27 16:57:12.428 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 1[0m
+[32m[2026-09-27 16:57:19.672 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:57:19.895 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:57:19.895 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[32m[2026-09-27 16:57:19.897 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 1[0m
+[32m[2026-09-27 16:58:09.747 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:58:09.977 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:58:09.977 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[32m[2026-09-27 16:58:09.978 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 1[0m
+[32m[2026-09-27 16:58:41.657 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 16:58:41.891 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 16:58:41.891 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[32m[2026-09-27 16:58:41.895 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 1[0m
+[32m[2026-09-27 17:05:08.575 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 17:05:08.801 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 17:05:08.801 +08:00 INFO kcm/src/camera.rs:187] camera manager has been load successfully[0m
+[32m[2026-09-27 17:05:08.802 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 1[0m
+[32m[2026-09-27 17:05:10.403 +08:00 INFO kcm/src/log_manager.rs:89] camera is inactive[0m
+[32m[2026-09-27 17:05:11.505 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 17:05:12.286 +08:00 INFO kcm/src/log_manager.rs:89] camera is inactive[0m
+[32m[2026-09-27 17:05:13.088 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 17:05:13.905 +08:00 INFO kcm/src/log_manager.rs:89] camera is inactive[0m
+[32m[2026-09-27 17:05:14.625 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 17:05:15.254 +08:00 INFO kcm/src/log_manager.rs:89] camera is inactive[0m
+[32m[2026-09-27 17:05:15.973 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 17:05:17.661 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[32m[2026-09-27 17:05:19.280 +08:00 INFO kcm/src/log_manager.rs:89] camera is inactive[0m
+[32m[2026-09-27 17:05:19.978 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 17:05:20.688 +08:00 INFO kcm/src/log_manager.rs:89] camera is inactive[0m
+[32m[2026-09-27 17:05:21.651 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 17:05:24.108 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 17:05:24.108 +08:00 INFO kcm/src/camera.rs:191] camera manager starts to save configuration[0m
+[32m[2026-09-27 17:05:24.108 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 17:05:27.576 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 17:05:27.576 +08:00 INFO kcm/src/camera.rs:191] camera manager starts to save configuration[0m
+[32m[2026-09-27 17:05:27.581 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 18:13:23.059 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 18:13:23.172 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 18:13:23.172 +08:00 INFO kcm/src/camera.rs:186] camera manager has been load successfully[0m
+[32m[2026-09-27 18:13:23.173 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-27 18:13:26.496 +08:00 INFO kcm/src/log_manager.rs:89] camera is inactive[0m
+[32m[2026-09-27 18:13:56.988 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 18:13:57.911 +08:00 INFO kcm/src/log_manager.rs:89] camera is inactive[0m
+[32m[2026-09-27 18:14:00.731 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 18:14:02.309 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[32m[2026-09-27 18:17:41.447 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 18:17:41.670 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 18:17:41.671 +08:00 INFO kcm/src/camera.rs:186] camera manager has been load successfully[0m
+[32m[2026-09-27 18:17:41.672 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-27 18:18:18.671 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[32m[2026-09-27 18:20:16.305 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[32m[2026-09-27 18:20:18.595 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[32m[2026-09-27 18:20:22.653 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[32m[2026-09-27 18:20:34.472 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[32m[2026-09-27 18:20:36.608 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[32m[2026-09-27 18:22:07.807 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video2'[0m
+[32m[2026-09-27 18:22:11.863 +08:00 INFO kcm/src/camera.rs:139] set device successfully with id '/dev/video0'[0m
+[32m[2026-09-27 18:22:13.623 +08:00 INFO kcm/src/log_manager.rs:89] camera is inactive[0m
+[32m[2026-09-27 18:22:14.432 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 18:22:15.776 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 18:22:15.777 +08:00 INFO kcm/src/camera.rs:190] camera manager starts to save configuration[0m
+[32m[2026-09-27 18:22:15.777 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 18:30:59.226 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 18:30:59.392 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 18:30:59.416 +08:00 INFO kcm/src/log_manager.rs:89] camera is inactive[0m
+[32m[2026-09-27 18:30:59.417 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 18:30:59.417 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-27 18:31:02.833 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 18:31:05.271 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 18:31:05.271 +08:00 INFO kcm/src/camera.rs:192] camera manager starts to save configuration[0m
+[32m[2026-09-27 18:31:05.271 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 18:31:08.906 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 18:31:09.063 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 18:31:09.063 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 18:31:09.064 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-27 18:31:17.944 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-27 18:31:17.944 +08:00 INFO kcm/src/camera.rs:192] camera manager starts to save configuration[0m
+[32m[2026-09-27 18:31:17.944 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-27 18:35:06.435 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-27 18:35:06.593 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-27 18:35:06.593 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-27 18:35:06.594 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m

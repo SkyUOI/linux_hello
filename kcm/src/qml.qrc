@@ -1,5 +1,4 @@
-<!DOCTYPE RCC>
-<RCC version="1.0">
+<RCC>
     <qresource prefix="/kcm/libkcm">
         <file alias="main.qml">ui/main.qml</file>
     </qresource>
