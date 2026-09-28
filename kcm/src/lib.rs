@@ -22,8 +22,10 @@ pub mod qobject {
         type QString = cxx_qt_lib::QString;
 
         include!("kcm/src/video_relay.h");
+
         #[namespace = "kcm_video_relay"]
         #[cxx_name = "attach"]
+        #[allow(clippy::missing_safety_doc)]
         unsafe fn video_relay_attach(sink: *mut QObject, interval_ms: u32);
     }
 

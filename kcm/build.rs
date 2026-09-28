@@ -2,19 +2,13 @@ use std::{
     fs,
     io::Write,
     path::{self, PathBuf},
-    process::{self, ExitCode},
 };
 
+use anyhow::Context;
 use cxx_qt_build::CppFile;
 
-fn main() -> process::ExitCode {
-    let include_dirs = match kcm_include_dirs() {
-        Ok(include_dirs) => include_dirs,
-        Err(e) => {
-            println!("cargo::error=build.rs failed: {e}");
-            return process::ExitCode::FAILURE;
-        }
-    };
+fn main() -> anyhow::Result<()> {
+    let include_dirs = kcm_include_dirs()?;
 
     let mut builder =
         cxx_qt_build::CxxQtBuilder::new_qml_module(cxx_qt_build::QmlModule::new("org.kde.libkcm"))
@@ -28,6 +22,7 @@ fn main() -> process::ExitCode {
 
     unsafe {
         builder = builder.cc_builder(|cc| {
+            cc.flag_if_supported("-Wno-sfinae-incomplete");
             include_dirs.iter().for_each(|dir| {
                 let _ = cc.include(dir);
             });
@@ -36,33 +31,15 @@ fn main() -> process::ExitCode {
 
     let version_script = get_version_script();
 
-    let exports_path = match get_exports_path() {
-        Ok(export_path) => export_path,
-        Err(e) => {
-            println!("cargo::error=build.rs failed: {e}");
-            return process::ExitCode::FAILURE;
-        }
-    };
+    let exports_path = get_exports_path()?;
 
-    let mut exports_file = match get_exports_file(&exports_path) {
-        Ok(exports_file) => exports_file,
-        Err(e) => {
-            println!("cargo::error=build.rs failed: {e}");
-            return ExitCode::FAILURE;
-        }
-    };
+    let mut exports_file = get_exports_file(&exports_path)?;
 
     for symbol in KCM_EXPORT_SYMBOLS {
         println!("cargo::rustc-link-arg=-Wl,--undefined={symbol}")
     }
 
-    // println!("cargo::rustc-link-arg=-lQt6Multimedia");
-    println!("cargo::rustc-link-arg=-lQt6Multimedia");
-
-    if let Err(e) = exports_file.write(version_script.as_bytes()) {
-        println!("cargo::error=build.rs failed: {e}");
-        return ExitCode::FAILURE;
-    }
+    exports_file.write_all(version_script.as_bytes())?;
 
     println!(
         "cargo::rustc-link-arg=-Wl,--version-script={}",
@@ -71,38 +48,53 @@ fn main() -> process::ExitCode {
 
     builder.build();
 
-    process::ExitCode::SUCCESS
+    Ok(())
 }
 
-fn kf6_include_dirs() -> Result<Vec<String>, &'static str> {
+fn kf6_include_dirs() -> anyhow::Result<Vec<String>> {
     cmake_package::find_package("KF6KCMUtils")
         .find()
-        .map_err(|_| "Couldn't find KF6KCMUtils, please install it")
-        .and_then(|package| {
-            package
-                .target("KF6::KCMUtilsQuick")
-                .ok_or("KF6::KCMUtilsQuick doesn't exist in KF6KCMUtils")
+        .context("Couldn't find KF6KCMUtils, please install it")?
+        .target("KF6::KCMUtilsQuick")
+        .map(|target| {
+            target.link();
+            target.include_directories
         })
-        .map(|target| target.include_directories)
+        .context("KF6::KCMUtilsQuick doesn't exist in KF6KCMUtils")
 }
 
-fn qt6_multimedia_include_dirs() -> Result<Vec<String>, &'static str> {
+fn qt6_multimedia_include_dirs() -> anyhow::Result<Vec<String>> {
     cmake_package::find_package("Qt6Multimedia")
         .find()
-        .map_err(|_| "Couldn't find Qt6Multimedia, please install it")
-        .and_then(|package| {
-            package
-                .target("Qt6::Multimedia")
-                .ok_or("Qt6::Multimedia doesn't exist in Qt6Multimedia")
+        .context("Couldn't find Qt6Multimedia, please install it")?
+        .target("Qt6::Multimedia")
+        .map(|target| {
+            target.link();
+            target.include_directories
         })
-        .map(|target| target.include_directories)
+        .context("Qt6::Multimedia doesn't exist in Qt6Multimedia")
 }
 
-fn kcm_include_dirs() -> Result<Vec<String>, &'static str> {
-    let mut kf6_dirs = kf6_include_dirs()?;
+fn qt6_concurrent_include_dirs() -> anyhow::Result<Vec<String>> {
+    cmake_package::find_package("Qt6")
+        .components(&["Concurrent".to_owned()])
+        .find()
+        .context("Couldn't find Qt6 with Concurrent, please install it")?
+        .target("Qt6::Concurrent")
+        .map(|target| {
+            target.link();
+            target.include_directories
+        })
+        .context("Qt6::Concurrent doesn't exist in Qt6's Concurrent component")
+}
+
+fn kcm_include_dirs() -> anyhow::Result<Vec<String>> {
+    let mut kcm_dirs = kf6_include_dirs()?;
     let multimedia_dirs = qt6_multimedia_include_dirs()?;
-    kf6_dirs.extend_from_slice(&multimedia_dirs);
-    Ok(kf6_dirs)
+    let concurrent_dirs = qt6_concurrent_include_dirs()?;
+    kcm_dirs.extend_from_slice(&multimedia_dirs);
+    kcm_dirs.extend_from_slice(&concurrent_dirs);
+    Ok(kcm_dirs)
 }
 
 const KCM_EXPORT_SYMBOLS: &[&str] = &["qt_plugin_instance", "qt_plugin_query_metadata_v2"];
@@ -119,18 +111,18 @@ fn get_version_script() -> String {
     version_script
 }
 
-fn get_exports_path() -> Result<PathBuf, &'static str> {
+fn get_exports_path() -> anyhow::Result<PathBuf> {
     Ok(
-        path::Path::new(&std::env::var("OUT_DIR").map_err(|_| "env 'OUT_DIR' not found")?)
+        path::Path::new(&std::env::var("OUT_DIR").context("env 'OUT_DIR' not found")?)
             .join("qt-plugin-exports.txt"),
     )
 }
 
-fn get_exports_file(exports_path: &path::Path) -> Result<fs::File, &'static str> {
+fn get_exports_file(exports_path: &path::Path) -> anyhow::Result<fs::File> {
     fs::OpenOptions::new()
         .write(true)
         .truncate(true)
         .create(true)
         .open(exports_path)
-        .map_err(|_| "cannot open and write qt-plugin-exports.txt")
+        .context("cannot open and write qt-plugin-exports.txt")
 }

@@ -19,7 +19,9 @@ log = "0.4.34"
 fern = { version = "0.7.1", features = ["colored"] }
 jiff = "0.2.37"
 udev = "0.9.3"
+image = "0.25.10"
 
 [build-dependencies]
 cmake-package = "0.2.0"
 cxx-qt-build = "0.10.0"
+anyhow.workspace = true

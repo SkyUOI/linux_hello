@@ -5,6 +5,8 @@
 #include <QVideoFrameFormat>
 #include <QImage>
 #include <rust/cxx.h>
+#include <QtConcurrent>
+#include <QFuture>
 
 void relay_frame(::std::int32_t width, ::std::int32_t height, ::std::int32_t stride,
                    ::rust::Slice<::std::uint8_t const> data) noexcept;
@@ -17,8 +19,9 @@ inline void attach(QObject* sinkObject, uint32_t intervalMs) {
     if (sink == nullptr) {
         return;
     }
+    QFuture<void> last_future;
     QObject::connect(sink, &QVideoSink::videoFrameChanged, sink, 
-        [intervalMs](const QVideoFrame &frame) {
+        [intervalMs, last_future](const QVideoFrame &frame) mutable {
             if (not frame.isValid()) {
                 return;
             }
@@ -52,9 +55,22 @@ inline void attach(QObject* sinkObject, uint32_t intervalMs) {
                 {
                     processedImage = frame.toImage().convertToFormat(QImage::Format_Grayscale8);
                     if (not processedImage.isNull()) {
-                        ::relay_frame(processedImage.width(), 
-                            processedImage.height(), processedImage.bytesPerLine(), 
-                        rust::Slice<const uint8_t>(processedImage.constBits(), processedImage.sizeInBytes()));
+                        int height = processedImage.height();
+                        int width = processedImage.width();
+                        int stride = processedImage.bytesPerLine();
+                        auto bitsStart = processedImage.constBits();
+                        auto size = processedImage.sizeInBytes();
+
+                        auto func = [height, width, stride, bitsStart, size]() {
+                            ::relay_frame(width, 
+                                height, stride, 
+                                rust::Slice<const uint8_t>(bitsStart, size));
+                        };
+
+                        if (not last_future.isValid() or last_future.isFinished()) {
+                            last_future = QtConcurrent::run(func);
+                        } 
+
                     }
                     break;
                 }
