@@ -1,3 +1,5 @@
 target/
 
 kcm/test_image/*
+
+.log
