@@ -27921,3 +27921,113 @@
 [32m[2026-09-29 19:27:10.897 +08:00 INFO kcm/src/camera.rs:193] camera manager starts to save configuration[0m
 [32m[2026-09-29 19:27:10.897 +08:00 INFO kcm/src/frame_processor.rs:40] frame processor starts to save configuration[0m
 [32m[2026-09-29 19:27:10.897 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[32m[2026-09-29 19:32:09.026 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-29 19:32:09.183 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-29 19:32:09.184 +08:00 INFO kcm/src/camera.rs:189] camera manager has been load successfully[0m
+[32m[2026-09-29 19:32:09.184 +08:00 INFO kcm/src/frame_processor.rs:36] frame processor has been constructed successfully[0m
+[32m[2026-09-29 19:32:09.185 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[37m[2026-09-29 19:32:09.318 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:09.566 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:09.797 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:10.028 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:10.259 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:10.491 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:10.718 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:10.924 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:11.156 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:11.381 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:11.619 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:11.854 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:12.083 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:12.316 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:12.548 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:12.777 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:13.011 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:13.243 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:13.522 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:13.776 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:14.000 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:14.231 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:14.464 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:14.703 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:14.935 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:15.168 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:15.425 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:15.624 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:15.824 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:16.061 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:16.293 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:16.527 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:16.760 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:16.983 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:17.216 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:17.450 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:17.716 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:17.956 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:18.189 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:18.422 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:18.652 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:18.885 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:19.120 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:19.371 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:19.635 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:19.868 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:20.135 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:20.400 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:20.631 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:20.831 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:21.097 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:21.327 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:21.560 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:21.800 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:22.032 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:22.259 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:22.525 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:22.792 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:23.053 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:23.291 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:23.492 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:23.729 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:23.998 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:24.256 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:24.489 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:24.721 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:24.952 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:25.195 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:25.448 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:32:25.698 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[32m[2026-09-29 19:36:26.271 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-29 19:36:26.429 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-29 19:36:26.429 +08:00 INFO kcm/src/camera.rs:189] camera manager has been load successfully[0m
+[32m[2026-09-29 19:36:26.429 +08:00 INFO kcm/src/frame_processor.rs:36] frame processor has been constructed successfully[0m
+[32m[2026-09-29 19:36:26.430 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[37m[2026-09-29 19:36:26.563 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:26.769 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:26.981 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:27.203 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[32m[2026-09-29 19:36:34.683 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-29 19:36:34.840 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-29 19:36:34.841 +08:00 INFO kcm/src/camera.rs:189] camera manager has been load successfully[0m
+[32m[2026-09-29 19:36:34.841 +08:00 INFO kcm/src/frame_processor.rs:36] frame processor has been constructed successfully[0m
+[32m[2026-09-29 19:36:34.841 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[37m[2026-09-29 19:36:34.970 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:35.225 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:35.421 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:35.651 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:35.883 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:36.130 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:36.348 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:36.556 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:36.816 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:37.076 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:37.344 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:37.583 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:37.809 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:38.040 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[32m[2026-09-29 19:36:38.215 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-29 19:36:38.215 +08:00 INFO kcm/src/camera.rs:193] camera manager starts to save configuration[0m
+[32m[2026-09-29 19:36:38.215 +08:00 INFO kcm/src/frame_processor.rs:40] frame processor starts to save configuration[0m
+[32m[2026-09-29 19:36:38.215 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
+[37m[2026-09-29 19:36:38.257 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:38.474 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:36:38.707 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m

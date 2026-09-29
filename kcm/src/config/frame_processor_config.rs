@@ -1,7 +1,7 @@
 #[derive(Debug, serde::Deserialize, serde::Serialize)]
 #[serde(default)]
 pub struct FrameProcessorConfig {
-    #[serde(alias = "interval-ms")]
+    #[serde(rename = "interval-ms", alias = "interval_ms")]
     pub interval_ms: u32,
 }
 
