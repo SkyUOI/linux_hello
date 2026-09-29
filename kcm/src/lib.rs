@@ -26,11 +26,21 @@ pub mod qobject {
         #[namespace = "kcm_video_relay"]
         #[cxx_name = "attach"]
         #[allow(clippy::missing_safety_doc)]
-        unsafe fn video_relay_attach(sink: *mut QObject, interval_ms: u32);
+        unsafe fn video_relay_attach(
+            frame_processor: *mut FrameProcessor,
+            sink: *mut QObject,
+            interval_ms: u32,
+        );
     }
 
     extern "Rust" {
-        fn relay_frame(width: i32, height: i32, stride: i32, data: &[u8]);
+        unsafe fn relay_frame(
+            frame_processor: *mut FrameProcessor,
+            width: i32,
+            height: i32,
+            stride: i32,
+            data: &[u8],
+        );
     }
 
     unsafe extern "RustQt" {
@@ -101,6 +111,13 @@ pub mod qobject {
         #[cxx_name = "attachFrameSink"]
         #[qinvokable]
         fn attach_frame_sink(self: Pin<&mut FrameProcessor>, sink: *mut QObject);
+
+        #[qinvokable]
+        fn init(self: Pin<&mut FrameProcessor>, kcm: *mut Kcm);
+
+        #[cxx_name = "saveConfig"]
+        #[qinvokable]
+        fn save_config(self: &FrameProcessor);
     }
 
     impl

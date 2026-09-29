@@ -25,14 +25,13 @@ impl Default for LogManager {
 impl qobject::LogManager {
     /// # Safety
     ///
-    /// Only use this function after kcm is constructed.
+    /// Only run this function after `kcm` is constructed.
     pub unsafe fn init(mut self: pin::Pin<&mut Self>, kcm: *const qobject::Kcm) {
         if kcm.is_null() {
             log::error!("kcm is null");
             return;
         }
-        self.as_mut().rust_mut().config = Some(rc::Rc::clone(&unsafe { &*kcm }.config));
-        let config = &self.config.as_ref().expect("config has been Some").clone();
+        let config = rc::Rc::clone(&unsafe { &*kcm }.config);
         (
             self.as_mut().rust_mut().log_level_filter,
             self.as_mut().rust_mut().log_path,
@@ -78,6 +77,7 @@ impl qobject::LogManager {
         dispatch
             .apply()
             .expect("applying fern to config log outputs");
+        self.as_mut().rust_mut().config = Some(config);
         log::info!("log manager has been load successfully");
     }
 

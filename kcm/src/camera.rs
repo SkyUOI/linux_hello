@@ -159,15 +159,15 @@ impl qobject::CameraManager {
 
     /// # Safety
     ///
-    /// Only use this function after kcm is constructed.
+    /// Only run this function after `kcm` is constructed.
     pub unsafe fn init(mut self: pin::Pin<&mut Self>, kcm: *const qobject::Kcm) {
         if kcm.is_null() {
             log::error!("kcm is null");
             self.set_running(false);
             return;
         }
-        self.as_mut().rust_mut().config = Some(rc::Rc::clone(&unsafe { &*kcm }.config));
-        let config = &self.config.as_ref().expect("config has been Some").clone();
+
+        let config = rc::Rc::clone(&unsafe { &*kcm }.config);
 
         if let Some(system_path) = config.borrow().camera_config.camera_system_path.as_ref() {
             self.as_mut().rust_mut().camera = Some(match Camera::new(system_path.clone()) {
@@ -185,16 +185,20 @@ impl qobject::CameraManager {
             .set_mirrored(config.borrow().camera_config.mirrored);
         self.as_mut()
             .set_running(config.borrow().camera_config.running);
+        self.as_mut().rust_mut().config = Some(config);
         log::info!("camera manager has been load successfully");
     }
 
     pub fn save_config(&self) {
         info!("camera manager starts to save configuration");
-        let mut config = self
+        let Some(mut config) = self
             .config
             .as_ref()
-            .expect("config has been Some")
-            .borrow_mut();
+            .map(|config| config.borrow_mut())
+        else {
+            log::error!("camera manager cannot get configuration");
+            return;
+        };
         config.camera_config.camera_system_path = self
             .camera
             .as_ref()

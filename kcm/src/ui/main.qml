@@ -17,6 +17,8 @@ KCM.SimpleKCM {
 
         logManager.init(kcm);
         cameraManager.init(kcm);
+        frameProcessor.init(kcm);
+
         frameProcessor.attachFrameSink(video.videoSink);
 
         root.syncDevices();
@@ -45,6 +47,7 @@ KCM.SimpleKCM {
 
         function onSaved() {
             cameraManager.saveConfig();
+            frameProcessor.saveConfig();
         }
 
         function onLoaded() {

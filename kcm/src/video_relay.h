@@ -8,20 +8,22 @@
 #include <QtConcurrent>
 #include <QFuture>
 
-void relay_frame(::std::int32_t width, ::std::int32_t height, ::std::int32_t stride,
+class FrameProcessor;
+
+void relay_frame(::FrameProcessor*, ::std::int32_t width, ::std::int32_t height, ::std::int32_t stride,
                    ::rust::Slice<::std::uint8_t const> data) noexcept;
 
 namespace kcm_video_relay {
 inline QElapsedTimer s_lastTime;
 
-inline void attach(QObject* sinkObject, uint32_t intervalMs) {
+inline void attach(FrameProcessor* frameProcessor, QObject* sinkObject, uint32_t intervalMs) {
     auto* sink = qobject_cast<QVideoSink* >(sinkObject);
     if (sink == nullptr) {
         return;
     }
     QFuture<void> last_future;
     QObject::connect(sink, &QVideoSink::videoFrameChanged, sink, 
-        [intervalMs, last_future](const QVideoFrame &frame) mutable {
+        [intervalMs, last_future, frameProcessor](const QVideoFrame &frame) mutable {
             if (not frame.isValid()) {
                 return;
             }
@@ -61,8 +63,8 @@ inline void attach(QObject* sinkObject, uint32_t intervalMs) {
                         auto bitsStart = processedImage.constBits();
                         auto size = processedImage.sizeInBytes();
 
-                        auto func = [height, width, stride, bitsStart, size]() {
-                            ::relay_frame(width, 
+                        auto func = [frameProcessor, height, width, stride, bitsStart, size]() {
+                            ::relay_frame(frameProcessor, width, 
                                 height, stride, 
                                 rust::Slice<const uint8_t>(bitsStart, size));
                         };

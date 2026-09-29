@@ -1,11 +1,12 @@
 use std::{
     fs,
-    io::{self, Read},
+    io::{self, Read as _},
     ops::Not as _,
     path,
 };
 
 pub mod camera_config;
+pub mod frame_processor_config;
 pub mod log_manager_config;
 
 /// The configuration of Kcm.
@@ -19,6 +20,8 @@ pub struct Config {
     pub camera_config: camera_config::CameraConfig,
     #[serde(rename = "log")]
     pub log_manager_config: log_manager_config::LogManagerConfig,
+    #[serde(rename = "frame-processor", alias = "frame_processor")]
+    pub frame_processor_config: frame_processor_config::FrameProcessorConfig,
 }
 
 impl Config {

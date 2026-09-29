@@ -27874,3 +27874,50 @@
 [37m[2026-09-28 22:32:47.401 +08:00 TRACE kcm/src/frame_processor.rs:22] width: 1280, height: 720, stride: 1280, data len: 921600[0m
 [37m[2026-09-28 22:32:47.639 +08:00 TRACE kcm/src/frame_processor.rs:22] width: 1280, height: 720, stride: 1280, data len: 921600[0m
 [37m[2026-09-28 22:32:47.872 +08:00 TRACE kcm/src/frame_processor.rs:22] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[32m[2026-09-28 23:08:34.126 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-28 23:08:34.289 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-28 23:08:34.290 +08:00 INFO kcm/src/camera.rs:188] camera manager has been load successfully[0m
+[32m[2026-09-28 23:08:34.291 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-29 19:25:19.055 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-29 19:25:19.168 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-29 19:25:19.168 +08:00 INFO kcm/src/camera.rs:189] camera manager has been load successfully[0m
+[32m[2026-09-29 19:25:19.168 +08:00 INFO kcm/src/frame_processor.rs:36] frame processor has been constructed successfully[0m
+[32m[2026-09-29 19:25:19.169 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[32m[2026-09-29 19:27:04.113 +08:00 INFO kcm/src/log_manager.rs:81] log manager has been load successfully[0m
+[32m[2026-09-29 19:27:04.272 +08:00 INFO kcm/src/log_manager.rs:89] camera is active[0m
+[32m[2026-09-29 19:27:04.272 +08:00 INFO kcm/src/camera.rs:189] camera manager has been load successfully[0m
+[32m[2026-09-29 19:27:04.272 +08:00 INFO kcm/src/frame_processor.rs:36] frame processor has been constructed successfully[0m
+[32m[2026-09-29 19:27:04.273 +08:00 INFO kcm/src/log_manager.rs:89] the index of current device in list's is 0[0m
+[37m[2026-09-29 19:27:04.387 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:04.622 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:04.844 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:05.080 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:05.314 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:05.547 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:05.750 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:06.012 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:06.244 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:06.476 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:06.708 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:06.940 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:07.172 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:07.404 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:07.639 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:07.868 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:08.098 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:08.331 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:08.603 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:08.792 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:09.056 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:09.260 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:09.497 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:09.702 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:09.969 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:10.202 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:10.454 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:10.665 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[37m[2026-09-29 19:27:10.896 +08:00 TRACE kcm/src/frame_processor.rs:59] width: 1280, height: 720, stride: 1280, data len: 921600[0m
+[32m[2026-09-29 19:27:10.897 +08:00 INFO kcm/src/kcm.rs:65] kcm starts to save configuration[0m
+[32m[2026-09-29 19:27:10.897 +08:00 INFO kcm/src/camera.rs:193] camera manager starts to save configuration[0m
+[32m[2026-09-29 19:27:10.897 +08:00 INFO kcm/src/frame_processor.rs:40] frame processor starts to save configuration[0m
+[32m[2026-09-29 19:27:10.897 +08:00 INFO kcm/src/kcm.rs:71] configuration saved[0m
