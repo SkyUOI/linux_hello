@@ -1,15 +1,16 @@
 use cxx_qt::CxxQtType;
 
 use crate::{config, qobject};
-use std::{cell, pin, rc};
+use std::{cell, pin, rc, sync};
 
 #[derive(Default)]
-pub struct FrameProcessor {
+pub struct FrameCapturer {
     config: Option<rc::Rc<cell::RefCell<config::Config>>>,
     interval_ms: u32,
+    pub last_frame: sync::Arc<sync::Mutex<Option<face_recognition_api::FaceIdImage>>>,
 }
 
-impl qobject::FrameProcessor {
+impl qobject::FrameCapturer {
     /// # Safety
     ///
     /// Only run this function after `sink` is constructed
@@ -44,18 +45,24 @@ impl qobject::FrameProcessor {
         };
         config.frame_processor_config.interval_ms = self.interval_ms;
     }
+
+
 }
 
 /// # Safety
 ///
 /// Only run this function after `frame_processor` is constructed.
 pub unsafe fn relay_frame(
-    frame_processor: *mut qobject::FrameProcessor,
+    frame_capturer: *mut qobject::FrameCapturer,
     width: i32,
     height: i32,
     stride: i32,
     data: &[u8],
 ) {
+    if frame_capturer.is_null() {
+        log::error!("frame processor is null");
+        return;
+    }
     log::trace!(
         "width: {width}, height: {height}, stride: {stride}, data len: {}",
         data.len()
@@ -72,13 +79,17 @@ pub unsafe fn relay_frame(
         log::error!("stride cannot be transferred into u32");
         return;
     };
-    let mut gray_image = image::GrayImage::new(width, height);
-
-    for (i, row) in (0..height as usize).zip(gray_image.rows_mut()) {
-        let row_start = i * stride as usize;
-        row.zip(&data[row_start..][..width as usize])
-            .for_each(|(pixel, &data_pixel)| *pixel = [data_pixel].into());
-    }
-
-    gray_image.save("./kcm/test_image/test.png").unwrap();
+    let mut last_frame = match unsafe { &*frame_capturer }.last_frame.lock() {
+        Ok(last_frame) => last_frame,
+        Err(e) => {
+            log::error!("last_frame has been poisoned: {e}");
+            return;
+        }
+    };
+    *last_frame = Some(face_recognition_api::FaceIdImage {
+        width,
+        height,
+        stride,
+        data: data.to_vec(),
+    });
 }

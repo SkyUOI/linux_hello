@@ -3,11 +3,14 @@ use qobject::{KPluginMetaData, QObject};
 mod camera;
 mod config;
 mod env_vars;
-mod frame_processor;
+mod frame_capturer;
 mod kcm;
+mod kernel;
 mod log_manager;
+mod message_manager;
+mod utils;
 
-pub use frame_processor::relay_frame;
+pub use frame_capturer::relay_frame;
 
 #[cxx_qt::bridge]
 pub mod qobject {
@@ -21,13 +24,16 @@ pub mod qobject {
         include!("cxx-qt-lib/qstring.h");
         type QString = cxx_qt_lib::QString;
 
+        include!("cxx-qt-lib/qmap.h");
+        type QMap_QString_QVariant = cxx_qt_lib::QMap<cxx_qt_lib::QMapPair_QString_QVariant>;
+
         include!("kcm/src/video_relay.h");
 
         #[namespace = "kcm_video_relay"]
         #[cxx_name = "attach"]
         #[allow(clippy::missing_safety_doc)]
         unsafe fn video_relay_attach(
-            frame_processor: *mut FrameProcessor,
+            frame_capturer: *mut FrameCapturer,
             sink: *mut QObject,
             interval_ms: u32,
         );
@@ -35,7 +41,7 @@ pub mod qobject {
 
     extern "Rust" {
         unsafe fn relay_frame(
-            frame_processor: *mut FrameProcessor,
+            frame_capturer: *mut FrameCapturer,
             width: i32,
             height: i32,
             stride: i32,
@@ -94,30 +100,107 @@ pub mod qobject {
         #[qinvokable]
         fn init(self: Pin<&mut LogManager>, kcm: *const Kcm);
 
-        #[cxx_name = "reportErrorMessage"]
+        #[cxx_name = "reportErrorLog"]
         #[qinvokable]
-        fn report_error_message(self: &LogManager, message: QString);
+        fn report_error_log(self: &LogManager, message: QString);
 
-        #[cxx_name = "reportInfoMessage"]
+        #[cxx_name = "reportInfoLog"]
         #[qinvokable]
-        fn report_info_message(self: &LogManager, message: QString);
+        fn report_info_log(self: &LogManager, message: QString);
     }
 
     unsafe extern "RustQt" {
         #[qobject]
         #[qml_element]
-        type FrameProcessor = super::FrameProcessorRust;
+        type FrameCapturer = super::FrameCapturerRust;
 
         #[cxx_name = "attachFrameSink"]
         #[qinvokable]
-        fn attach_frame_sink(self: Pin<&mut FrameProcessor>, sink: *mut QObject);
+        fn attach_frame_sink(self: Pin<&mut FrameCapturer>, sink: *mut QObject);
 
         #[qinvokable]
-        fn init(self: Pin<&mut FrameProcessor>, kcm: *mut Kcm);
+        fn init(self: Pin<&mut FrameCapturer>, kcm: *mut Kcm);
 
         #[cxx_name = "saveConfig"]
         #[qinvokable]
-        fn save_config(self: &FrameProcessor);
+        fn save_config(self: &FrameCapturer);
+    }
+
+    unsafe extern "RustQt" {
+        #[qobject]
+        #[qml_element]
+        #[qproperty(bool, busy)]
+        type FaceRecognitionKernel = super::FaceRecognitionKernelRust;
+
+        #[qinvokable]
+        fn init(self: Pin<&mut FaceRecognitionKernel>, frame_processor: *mut FrameCapturer);
+
+        #[cxx_name = "loadFace"]
+        #[qinvokable]
+        fn load_face(self: Pin<&mut FaceRecognitionKernel>, id: QString);
+
+        #[cxx_name = "matchFace"]
+        #[qinvokable]
+        fn match_face(self: Pin<&mut FaceRecognitionKernel>);
+
+        #[cxx_name = "viewFaceList"]
+        #[qinvokable]
+        fn view_face_list(self: Pin<&mut FaceRecognitionKernel>);
+
+        #[cxx_name = "faceLoaded"]
+        #[qsignal]
+        fn face_loaded(self: Pin<&mut FaceRecognitionKernel>);
+
+        #[cxx_name = "faceMatched"]
+        #[qsignal]
+        fn face_matched(self: Pin<&mut FaceRecognitionKernel>);
+
+        #[cxx_name = "listGenerated"]
+        #[qsignal]
+        fn list_generated(self: Pin<&mut FaceRecognitionKernel>);
+
+        #[cxx_name = "getLoadResult"]
+        #[qinvokable]
+        fn get_load_result(self: &FaceRecognitionKernel) -> QMap_QString_QVariant;
+
+        #[cxx_name = "getMatchResult"]
+        #[qinvokable]
+        fn get_match_result(self: &FaceRecognitionKernel) -> QMap_QString_QVariant;
+
+        #[cxx_name = "getViewFaceListResult"]
+        #[qinvokable]
+        fn get_view_face_list_result(self: &FaceRecognitionKernel) -> QMap_QString_QVariant;
+    }
+
+    unsafe extern "RustQt" {
+        #[qobject]
+        #[qml_element]
+        #[qproperty(QString, current_text, cxx_name = "currentText")]
+        #[qproperty(i8, current_level, cxx_name = "currentLevel", READ = get_current_level, NOTIFY = current_level_changed)]
+        type MessageManager = super::MessageManagerRust;
+
+        #[cxx_name = "publishMessage"]
+        #[qinvokable]
+        fn publish_message(self: Pin<&mut MessageManager>, level: u8, message: QString);
+
+        #[cxx_name = "clearMessage"]
+        #[qinvokable]
+        fn clear_message(self: Pin<&mut MessageManager>);
+
+        #[cxx_name = "getCurrentLevel"]
+        #[qinvokable]
+        fn get_current_level(self: &MessageManager) -> i8;
+
+        #[qsignal]
+        fn current_level_changed(self: Pin<&mut MessageManager>);
+
+        #[cxx_name = "newMessagePublished"]
+        #[qsignal]
+        fn new_message_published(self: Pin<&mut MessageManager>);
+
+        #[cxx_name = "messageCleared"]
+        #[qsignal]
+        fn message_cleared(self: Pin<&mut MessageManager>);
     }
 
     impl
@@ -127,9 +210,13 @@ pub mod qobject {
         > for Kcm
     {
     }
+
+    impl cxx_qt::Threading for FaceRecognitionKernel {}
 }
 
 pub type KcmRust = kcm::Kcm;
 pub type CameraManagerRust = camera::CameraManager;
 pub type LogManagerRust = log_manager::LogManager;
-pub type FrameProcessorRust = frame_processor::FrameProcessor;
+pub type FrameCapturerRust = frame_capturer::FrameCapturer;
+pub type FaceRecognitionKernelRust = kernel::FaceRecognitionKernel;
+pub type MessageManagerRust = message_manager::MessageManager;

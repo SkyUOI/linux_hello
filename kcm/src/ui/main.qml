@@ -17,9 +17,11 @@ KCM.SimpleKCM {
 
         logManager.init(kcm);
         cameraManager.init(kcm);
-        frameProcessor.init(kcm);
+        frameCapturer.init(kcm);
 
-        frameProcessor.attachFrameSink(video.videoSink);
+        faceRecognitionKernel.init(frameCapturer);
+
+        frameCapturer.attachFrameSink(video.videoSink);
 
         root.syncDevices();
 
@@ -37,23 +39,268 @@ KCM.SimpleKCM {
             camera.active = running;
         }
     }
-
     readonly property LogManager logManager: LogManager {}
-
-    readonly property FrameProcessor frameProcessor: FrameProcessor {}
+    readonly property FrameCapturer frameCapturer: FrameCapturer {}
+    readonly property FaceRecognitionKernel faceRecognitionKernel: FaceRecognitionKernel {}
+    readonly property MessageManager messageManager: MessageManager {}
 
     Connections {
         target: kcm
 
         function onSaved() {
             cameraManager.saveConfig();
-            frameProcessor.saveConfig();
+            frameCapturer.saveConfig();
         }
 
         function onLoaded() {
             if (root.saveAfterLoading) {
                 kcm.needsSave = true;
                 root.saveAfterLoading = false;
+            }
+        }
+    }
+
+    Connections {
+        target: messageManager
+
+        function onNewMessagePublished() {
+            inlineMessage.visible = true;
+        }
+
+        function onMessageCleared() {
+            inlineMessage.visible = false;
+        }
+    }
+
+    Connections {
+        target: faceRecognitionKernel
+
+        function onFaceLoaded() {
+            const result = faceRecognitionKernel.getLoadResult();
+
+            const level = result["level"];
+            const message = result["message"];
+
+            messageManager.publishMessage(level, message);
+
+            resultDialog.setLevel(level);
+            resultDialog.setText(message);
+            resultDialog.setTitle("Loading Face Result");
+            resultDialog.open();
+        }
+
+        function onFaceMatched() {
+            const result = faceRecognitionKernel.getMatchResult();
+
+            const level = result["level"];
+            const message = result["message"];
+
+            messageManager.publishMessage(level, message);
+
+            resultDialog.setLevel(level);
+            resultDialog.setText(message);
+            resultDialog.setTitle("Matching Face Result");
+            resultDialog.open();
+        }
+
+        function onListGenerated() {
+            const result = faceRecognitionKernel.getViewFaceListResult();
+
+            const level = result["level"];
+            const message = result["message"];
+
+            messageManager.publishMessage(level, message);
+
+            if (level === Kirigami.MessageType.Positive) {
+                const faceList = result["faceList"];
+                listView.model = faceList;
+                listIdDialog.open();
+            } else {
+                resultDialog.setLevel(level);
+                resultDialog.setText(message);
+                resultDialog.setTitle("View List Result");
+                resultDialog.open();
+            }
+        }
+    }
+
+    Kirigami.PromptDialog {
+        id: resultDialog
+
+        anchors.centerIn: parent
+
+        modal: true
+        standardButtons: Kirigami.Dialog.Ok
+
+        implicitWidth: Kirigami.Units.gridUnit * 20
+
+        ColumnLayout {
+            anchors.topMargin: Kirigami.Units.largeSpacing
+            spacing: Kirigami.Units.largeSpacing
+
+            Item {
+                Layout.fillWidth: true
+            }
+
+            Kirigami.SelectableLabel {
+                id: faceIdDialogText
+                Layout.fillWidth: true
+
+                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.1
+                wrapMode: Text.WordWrap
+            }
+        }
+
+        function setTitle(text) {
+            title = text;
+        }
+
+        function setText(text) {
+            faceIdDialogText.text = text;
+        }
+
+        function setLevel(level) {
+            switch (level) {
+            case Kirigami.MessageType.Information:
+                iconName = "dialog-information";
+                break;
+            case Kirigami.MessageType.Positive:
+                iconName = "dialog-positive";
+                break;
+            case Kirigami.MessageType.Warning:
+                iconName = "dialog-warning";
+                break;
+            case Kirigami.MessageType.Error:
+                iconName = "dialog-error";
+                break;
+            default:
+                iconName = "dialog-question";
+                break;
+            }
+        }
+    }
+
+    QQC2.Dialog {
+        id: listIdDialog
+
+        anchors.centerIn: parent
+
+        title: "Face ID List"
+        modal: true
+        standardButtons: QQC2.Dialog.Ok
+
+        implicitWidth: Kirigami.Units.gridUnit * 20
+
+        ColumnLayout {
+            id: listIdLayout
+
+            anchors.fill: parent
+
+            readonly property real rowHeight: Kirigami.Units.gridUnit * 2
+            readonly property real createdAtWidth: listView.width * 0.4
+            readonly property real faceIdWidth: listView.width * 0.6
+
+            spacing: 0
+
+            Rectangle {
+                Layout.fillWidth: true
+                implicitHeight: listIdLayout.rowHeight
+                color: Kirigami.Theme.alternateBackgroundColor
+
+                Rectangle {
+                    anchors.top: parent.top
+                    implicitWidth: parent.width
+                    color: Kirigami.Theme.disabledTextColor
+                    height: 2
+                }
+
+                RowLayout {
+                    anchors.fill: parent
+                    // anchors.leftMargin: Kirigami.Units.smallSpacing
+                    // anchors.rightMargin: Kirigami.Units.smallSpacing
+                    spacing: 0
+
+                    QQC2.Label {
+                        Layout.preferredWidth: listIdLayout.createdAtWidth
+
+                        text: "Created At"
+                        horizontalAlignment: Text.AlignHCenter
+                        font.bold: true
+                        elide: Text.ElideRight
+                    }
+
+                    QQC2.Label {
+                        Layout.preferredWidth: listIdLayout.faceIdWidth
+
+                        text: "Face ID"
+                        horizontalAlignment: Text.AlignHCenter
+                        font.bold: true
+                        elide: Text.ElideRight
+                    }
+                }
+
+                Rectangle {
+                    anchors.bottom: parent.bottom
+                    implicitWidth: parent.width
+                    height: 1
+                    color: Kirigami.Theme.disabledTextColor
+                }
+            }
+
+            ListView {
+                id: listView
+                Layout.fillWidth: true
+                implicitHeight: Math.min(listView.contentHeight, listIdLayout.rowHeight * 8)
+                clip: true
+                spacing: 0
+
+                delegate: Rectangle {
+                    width: listView.width
+                    height: listIdLayout.rowHeight
+                    color: index % 2 === 0 ? "transparent" : Kirigami.Theme.alternateBackgroundColor
+
+                    RowLayout {
+                        anchors.fill: parent
+                        anchors.leftMargin: Kirigami.Units.smallSpacing
+                        anchors.rightMargin: Kirigami.Units.smallSpacing
+                        spacing: 0
+
+                        Kirigami.SelectableLabel {
+                            Layout.preferredWidth: listIdLayout.createdAtWidth
+
+                            text: modelData.createdAt
+                            horizontalAlignment: Text.AlignHCenter
+                        }
+
+                        Kirigami.SelectableLabel {
+                            Layout.preferredWidth: listIdLayout.faceIdWidth
+
+                            text: modelData.faceId
+                            horizontalAlignment: Text.AlignHCenter
+                        }
+                    }
+                }
+
+                Rectangle {
+                    anchors.bottom: parent.bottom
+                    implicitWidth: parent.width
+                    height: 2
+                    color: Kirigami.Theme.disabledTextColor
+                }
+            }
+
+            Rectangle {
+                Layout.fillWidth: true
+                implicitHeight: listIdLayout.rowHeight
+
+                QQC2.Label {
+                    anchors.fill: parent
+
+                    text: "No face ID found"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    visible: listView.count === 0
+                }
             }
         }
     }
@@ -69,7 +316,7 @@ KCM.SimpleKCM {
     function syncDevices() {
         const device = resolveDevice();
         if (String(device.id) === "") {
-            logManager.reportErrorMessage("cannot resolve device");
+            logManager.reportErrorLog("cannot resolve device");
             return;
         }
         if (cameraManager.currentDeviceId() !== String(device.id)) {
@@ -99,7 +346,7 @@ KCM.SimpleKCM {
         const id = cameraManager.currentDeviceId();
         for (var i = 0; i < mediaDevices.videoInputs.length; ++i) {
             if (String(mediaDevices.videoInputs[i].id) === id) {
-                logManager.reportInfoMessage("the index of current device in list's is " + i);
+                logManager.reportInfoLog("the index of current device in list's is " + i);
                 return i;
             }
         }
@@ -116,13 +363,15 @@ KCM.SimpleKCM {
             }
             onActiveChanged: {
                 if (active) {
-                    logManager.reportInfoMessage("camera is active");
+                    logManager.reportInfoLog("camera is active");
+                    messageManager.clearMessage();
                 } else {
-                    logManager.reportInfoMessage("camera is inactive");
+                    logManager.reportInfoLog("camera is inactive");
+                    messageManager.publishMessage(Kirigami.MessageType.Warning, "Camera is inactive, please start it");
                 }
             }
             onErrorOccurred: (errorCode, errorMessage) => {
-                logManager.reportErrorMessage(errorMessage);
+                logManager.reportErrorLog(errorMessage);
             }
         }
 
@@ -146,8 +395,8 @@ KCM.SimpleKCM {
 
                 anchors.fill: parent
                 fillMode: VideoOutput.PreserveAspectCrop
-                visible: root.cameraManager.running
-                mirrored: root.cameraManager.mirrored
+                visible: cameraManager.running
+                mirrored: cameraManager.mirrored
             }
 
             Kirigami.PlaceholderMessage {
@@ -156,7 +405,7 @@ KCM.SimpleKCM {
                 icon.name: root.cameraAvailable ? "camera-video" : "camera-off"
                 text: root.cameraAvailable ? "preview stop" : "no available camera"
                 explanation: root.cameraAvailable ? "click 'start preview'" : "check system camera"
-                visible: !root.cameraManager.running
+                visible: !cameraManager.running
             }
         }
 
@@ -174,7 +423,7 @@ KCM.SimpleKCM {
 
                 onActivated: index => {
                     const dev = mediaDevices.videoInputs[index];
-                    root.cameraManager.setDevice(dev.id);
+                    cameraManager.setDevice(dev.id);
                     camera.cameraDevice = dev;
                     kcm.needsSave = true;
                 }
@@ -184,9 +433,9 @@ KCM.SimpleKCM {
                 id: mirroredSwitcher
 
                 Kirigami.FormData.label: "mirrored: "
-                checked: root.cameraManager.mirrored
+                checked: cameraManager.mirrored
                 onToggled: {
-                    root.cameraManager.mirrored = checked;
+                    cameraManager.mirrored = checked;
                     kcm.needsSave = true;
                 }
             }
@@ -196,12 +445,99 @@ KCM.SimpleKCM {
             Layout.fillWidth: true
 
             QQC2.Button {
-                text: root.cameraManager.running ? "stop preview" : "start preview"
+                text: cameraManager.running ? "stop preview" : "start preview"
                 icon.name: "view-refresh"
                 onClicked: {
-                    root.cameraManager.running = !root.cameraManager.running;
+                    cameraManager.running = !cameraManager.running;
                 }
             }
+
+            QQC2.Button {
+                text: "load face"
+                icon.name: "face-smile"
+                onClicked: faceIdDialog.open()
+                enabled: cameraManager.running && !root.faceRecognitionKernel.busy
+            }
+
+            QQC2.Button {
+                text: "match face"
+                icon.name: "user-identity"
+                enabled: cameraManager.running && !root.faceRecognitionKernel.busy
+                onClicked: {
+                    faceRecognitionKernel.matchFace();
+                    messageManager.publishMessage(Kirigami.MessageType.Information, "Matching ...");
+                }
+            }
+
+            QQC2.Button {
+                text: "view list"
+                icon.name: "view-list-details"
+                onClicked: {
+                    faceRecognitionKernel.viewFaceList();
+                }
+            }
+        }
+
+        Kirigami.InlineMessage {
+            id: inlineMessage
+
+            Layout.fillWidth: true
+            text: messageManager.currentText
+            type: levelToMessageType(messageManager.currentLevel)
+            showCloseButton: true
+
+            function levelToMessageType(level) {
+                if (level == -1) {
+                    return Kirigami.MessageType.Information;
+                } else {
+                    return level;
+                }
+            }
+
+            Component.onCompleted: {
+                visible = false;
+            }
+        }
+    }
+
+    QQC2.Dialog {
+        id: faceIdDialog
+
+        anchors.centerIn: parent
+
+        title: "Input Face ID"
+        modal: true
+        standardButtons: QQC2.Dialog.Ok | QQC2.Dialog.Cancel
+
+        implicitWidth: Kirigami.Units.gridUnit * 20
+
+        QQC2.TextField {
+            id: faceIdField
+            anchors.fill: parent
+            placeholderText: "please input face ID"
+            onVisibleChanged: {
+                if (visible) {
+                    forceActiveFocus();
+                    faceIdDialog.updateOkButton();
+                }
+            }
+            onTextChanged: faceIdDialog.updateOkButton()
+            onAccepted: {
+                if (faceIdDialog.standardButton(QQC2.Dialog.Ok).enabled) {
+                    faceIdDialog.accept();
+                }
+            }
+        }
+
+        function updateOkButton() {
+            faceIdDialog.standardButton(QQC2.Dialog.Ok).enabled = faceIdField.length > 0;
+        }
+
+        onAccepted: {
+            faceRecognitionKernel.loadFace(faceIdField.text);
+            messageManager.publishMessage(Kirigami.MessageType.Information, "Loading ...");
+            kcm.needsSave = true;
+            faceIdField.text = "";
         }
     }
 }

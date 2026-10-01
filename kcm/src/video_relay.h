@@ -8,22 +8,23 @@
 #include <QtConcurrent>
 #include <QFuture>
 
-class FrameProcessor;
+class FrameCapturer;
 
-void relay_frame(::FrameProcessor*, ::std::int32_t width, ::std::int32_t height, ::std::int32_t stride,
+void relay_frame(::FrameCapturer*, ::std::int32_t width, ::std::int32_t height, ::std::int32_t stride,
                    ::rust::Slice<::std::uint8_t const> data) noexcept;
 
 namespace kcm_video_relay {
 inline QElapsedTimer s_lastTime;
 
-inline void attach(FrameProcessor* frameProcessor, QObject* sinkObject, uint32_t intervalMs) {
+inline void attach(FrameCapturer* frameCapturer, QObject* sinkObject, uint32_t intervalMs) {
     auto* sink = qobject_cast<QVideoSink* >(sinkObject);
     if (sink == nullptr) {
         return;
     }
     QFuture<void> last_future;
+
     QObject::connect(sink, &QVideoSink::videoFrameChanged, sink, 
-        [intervalMs, last_future, frameProcessor](const QVideoFrame &frame) mutable {
+        [intervalMs, last_future, frameCapturer](const QVideoFrame &frame) mutable {
             if (not frame.isValid()) {
                 return;
             }
@@ -60,13 +61,15 @@ inline void attach(FrameProcessor* frameProcessor, QObject* sinkObject, uint32_t
                         int height = processedImage.height();
                         int width = processedImage.width();
                         int stride = processedImage.bytesPerLine();
-                        auto bitsStart = processedImage.constBits();
-                        auto size = processedImage.sizeInBytes();
+                        auto buf = std::make_shared<QByteArray>(reinterpret_cast<const char*>(processedImage.constBits()), 
+                        processedImage.sizeInBytes());
+                        // auto bitsStart = processedImage.constBits();
+                        // auto size = processedImage.sizeInBytes();
 
-                        auto func = [frameProcessor, height, width, stride, bitsStart, size]() {
-                            ::relay_frame(frameProcessor, width, 
+                        auto func = [frameCapturer, height, width, stride, buf]() {
+                            ::relay_frame(frameCapturer, width, 
                                 height, stride, 
-                                rust::Slice<const uint8_t>(bitsStart, size));
+                                rust::Slice<const uint8_t>(reinterpret_cast<const uint8_t*>(buf->constData()), buf->size()));
                         };
 
                         if (not last_future.isValid() or last_future.isFinished()) {

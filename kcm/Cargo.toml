@@ -14,14 +14,23 @@ dirs = "7.0.0"
 serde = { version = "1.0.229", features = ["derive"] }
 toml = "1.1.6"
 thiserror.workspace = true
+anyhow.workspace = true
 cxx-qt-lib = "0.10.0"
 log = "0.4.34"
 fern = { version = "0.7.1", features = ["colored"] }
 jiff = "0.2.37"
 udev = "0.9.3"
-image = "0.25.10"
+image = { version = "0.25.10", optional = true }
+face-recognition-api = { version = "0.1.0", path = "face-recognition-api" }
+face-id-kernel = { version = "0.1.0", path = "face-id-kernel", optional = true }
 
 [build-dependencies]
 cmake-package = "0.2.0"
 cxx-qt-build = "0.10.0"
 anyhow.workspace = true
+
+[features]
+default = ["noop-kernel"]
+noop-kernel = []
+face-id-kernel = ["dep:face-id-kernel"]
+test = ["dep:image"]

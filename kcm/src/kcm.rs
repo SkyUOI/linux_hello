@@ -3,7 +3,6 @@ use log::info;
 use crate::{config, qobject};
 use std::{cell, fs, io::Write, pin, rc};
 
-#[derive(Default)]
 pub struct Kcm {
     pub config: rc::Rc<cell::RefCell<config::Config>>,
 }
@@ -44,7 +43,7 @@ impl cxx_qt::Constructor<(*mut qobject::QObject, qobject::KPluginMetaData)> for 
     }
 
     fn new(_arguments: Self::NewArguments) -> <Self as cxx_qt::CxxQtType>::Rust {
-        let config = match config::Config::load() {
+        let config = rc::Rc::new(cell::RefCell::new(match config::Config::load() {
             Ok(config) => {
                 println!("get configuration: {config:#?}");
                 config
@@ -53,10 +52,8 @@ impl cxx_qt::Constructor<(*mut qobject::QObject, qobject::KPluginMetaData)> for 
                 eprintln!("configuration error and use default one: {}", e);
                 config::Config::default()
             }
-        };
-        Kcm {
-            config: rc::Rc::new(cell::RefCell::new(config)),
-        }
+        }));
+        Kcm { config }
     }
 }
 

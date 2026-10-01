@@ -81,11 +81,11 @@ impl qobject::LogManager {
         log::info!("log manager has been load successfully");
     }
 
-    pub fn report_error_message(&self, message: cxx_qt_lib::QString) {
+    pub fn report_error_log(&self, message: cxx_qt_lib::QString) {
         log::error!("{message}")
     }
 
-    pub fn report_info_message(&self, message: cxx_qt_lib::QString) {
+    pub fn report_info_log(&self, message: cxx_qt_lib::QString) {
         log::info!("{message}")
     }
 }

@@ -4,7 +4,9 @@ members = [
     "pam",
     "gui",
     "kernel",
-    "kcm"
+    "kcm",
+    "kcm/face-id-kernel",
+    "kcm/face-recognition-api",
 ]
 
 [workspace.package]

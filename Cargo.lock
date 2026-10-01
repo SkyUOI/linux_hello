@@ -630,6 +630,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "face-id-kernel"
+version = "0.1.0"
+
+[[package]]
+name = "face-recognition-api"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "thiserror 2.0.21",
+]
+
+[[package]]
 name = "fastrand"
 version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -915,6 +927,8 @@ dependencies = [
  "cxx-qt-build",
  "cxx-qt-lib",
  "dirs",
+ "face-id-kernel",
+ "face-recognition-api",
  "fern",
  "image",
  "jiff",
