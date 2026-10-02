@@ -4,3 +4,29 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+face-recognition-api = { version = "0.1.0", path = "../face-recognition-api" }
+face_id = "0.4.4"
+hf-hub = "1.0.0"
+tokio = "1.53.1"
+dirs.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+jiff.workspace = true
+fern.workspace = true
+log.workspace = true
+sea-orm = { version = "2.0.4", features = [
+    "sqlx-sqlite",
+    "runtime-tokio",
+    "macros",
+] }
+image.workspace = true
+migration = { version = "0.1.0", path = "migration" }
+jiff-chrono-conversions = "0.1.1"
+
+[[bin]]
+name = "fetch-model"
+path = "src/bin/fetch_model.rs"
+
+[[bin]]
+name = "migrate"
+path = "src/bin/migrate.rs"

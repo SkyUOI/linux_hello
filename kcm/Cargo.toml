@@ -7,20 +7,20 @@ edition.workspace = true
 crate-type = ["cdylib"]
 
 [dependencies]
+image.workspace = true
 cxx = "1.0.202"
 cxx-qt = "0.10.0"
 cxx-kde-frameworks = { git = "https://invent.kde.org/libraries/cxx-kde-frameworks.git" }
-dirs = "7.0.0"
+dirs.workspace = true
 serde = { version = "1.0.229", features = ["derive"] }
 toml = "1.1.6"
 thiserror.workspace = true
 anyhow.workspace = true
 cxx-qt-lib = "0.10.0"
-log = "0.4.34"
-fern = { version = "0.7.1", features = ["colored"] }
-jiff = "0.2.37"
+jiff.workspace = true
+fern.workspace = true
+log.workspace = true
 udev = "0.9.3"
-image = { version = "0.25.10", optional = true }
 face-recognition-api = { version = "0.1.0", path = "face-recognition-api" }
 face-id-kernel = { version = "0.1.0", path = "face-id-kernel", optional = true }
 
@@ -33,4 +33,4 @@ anyhow.workspace = true
 default = ["noop-kernel"]
 noop-kernel = []
 face-id-kernel = ["dep:face-id-kernel"]
-test = ["dep:image"]
+test = []

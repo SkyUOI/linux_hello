@@ -7,6 +7,7 @@ members = [
     "kcm",
     "kcm/face-id-kernel",
     "kcm/face-recognition-api",
+    "kcm/face-id-kernel/migration",
 ]
 
 [workspace.package]
@@ -15,7 +16,9 @@ edition = "2024"
 
 [workspace.dependencies]
 anyhow = "1.0.104"
-pam = "0.8.0"
 thiserror = "2.0.21"
-tss-esapi = "7.7.0"
-ultralytics-inference = "0.0.48"
+dirs = "7.0.0"
+jiff = "0.2.37"
+fern = { version = "0.7.1", features = ["colored"] }
+log = "0.4.34"
+image = "0.25.10"

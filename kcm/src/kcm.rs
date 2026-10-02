@@ -59,13 +59,13 @@ impl cxx_qt::Constructor<(*mut qobject::QObject, qobject::KPluginMetaData)> for 
 
 impl qobject::Kcm {
     pub fn save(mut self: pin::Pin<&mut Self>) {
-        info!("kcm starts to save configuration");
-        self.as_mut().saved();
+        info!("kcm starts to save configuration and data");
+        self.as_mut().start_saving();
         if let Err(e) = self.save_config() {
             log::error!("save configuration error: {e}");
             return;
         }
-        info!("configuration saved");
+        info!("configuration and data saved");
     }
 
     pub fn load(self: pin::Pin<&mut Self>) {

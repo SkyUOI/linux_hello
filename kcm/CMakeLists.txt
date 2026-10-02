@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(test VERSION 0.1 LANGUAGES CXX)
+project(kcm VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -13,8 +13,12 @@ if (EXISTS "${CMAKE_CURRENT_LIST_DIR}/importedcontent/CMakeLists.txt")
     add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/importedcontent)
 endif()
 
-qt_add_qml_module(apptest
-    URI test
+# qt_add_executable(appkcm
+#     main.cpp
+# )
+
+qt_add_qml_module(appkcm
+    URI kcm
     QML_FILES
         src/ui/main.qml
 )
@@ -22,19 +26,19 @@ qt_add_qml_module(apptest
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
-set_target_properties(apptest PROPERTIES
-#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.apptest
+set_target_properties(appkcm PROPERTIES
+#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appkcm
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
     WIN32_EXECUTABLE TRUE
 )
 
-target_link_libraries(apptest
+target_link_libraries(appkcm
     PRIVATE Qt6::Quick
 )
 
-install(TARGETS apptest
+install(TARGETS appkcm
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

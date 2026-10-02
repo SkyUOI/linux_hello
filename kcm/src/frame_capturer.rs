@@ -1,13 +1,12 @@
-use cxx_qt::CxxQtType;
-
 use crate::{config, qobject};
+use cxx_qt::CxxQtType;
 use std::{cell, pin, rc, sync};
 
 #[derive(Default)]
 pub struct FrameCapturer {
     config: Option<rc::Rc<cell::RefCell<config::Config>>>,
     interval_ms: u32,
-    pub last_frame: sync::Arc<sync::Mutex<Option<face_recognition_api::FaceIdImage>>>,
+    pub last_frame: sync::Arc<sync::Mutex<Option<image::DynamicImage>>>,
 }
 
 impl qobject::FrameCapturer {
@@ -45,8 +44,6 @@ impl qobject::FrameCapturer {
         };
         config.frame_processor_config.interval_ms = self.interval_ms;
     }
-
-
 }
 
 /// # Safety
@@ -86,10 +83,17 @@ pub unsafe fn relay_frame(
             return;
         }
     };
-    *last_frame = Some(face_recognition_api::FaceIdImage {
-        width,
-        height,
-        stride,
-        data: data.to_vec(),
-    });
+    let mut gray_image = image::GrayImage::new(width, height);
+
+    for (i, row) in (0..height as usize).zip(gray_image.rows_mut()) {
+        let row_start = i * stride as usize;
+        row.zip(&data[row_start..][..width as usize])
+            .for_each(|(pixel, &data_pixel)| *pixel = [data_pixel].into());
+    }
+
+    #[cfg(feature = "test")]
+    gray_image
+        .save(path::Path::new("./kcm/test_image/test.png"))
+        .unwrap();
+    *last_frame = Some(image::DynamicImage::from(gray_image))
 }

@@ -19,7 +19,7 @@ KCM.SimpleKCM {
         cameraManager.init(kcm);
         frameCapturer.init(kcm);
 
-        faceRecognitionKernel.init(frameCapturer);
+        faceRecognitionKernel.init(frameCapturer, kcm);
 
         frameCapturer.attachFrameSink(video.videoSink);
 
@@ -47,9 +47,10 @@ KCM.SimpleKCM {
     Connections {
         target: kcm
 
-        function onSaved() {
+        function onStartSaving() {
             cameraManager.saveConfig();
             frameCapturer.saveConfig();
+            faceRecognitionKernel.saveData();
         }
 
         function onLoaded() {
@@ -59,6 +60,17 @@ KCM.SimpleKCM {
             }
         }
     }
+
+    // Kirigami.PromptDialog {
+    //     id: waitingSavingDialog
+
+    //     anchors.centerIn: parent
+    //     implicitWidth: Kirigami.Units.gridUnit * 15
+    //     iconName: "dialog-information"
+
+    //     title: "Waiting for Saving"
+    //     subtitle: "Please wait while the data and configuration is saved."
+    // }
 
     Connections {
         target: messageManager
@@ -118,9 +130,37 @@ KCM.SimpleKCM {
             } else {
                 resultDialog.setLevel(level);
                 resultDialog.setText(message);
-                resultDialog.setTitle("View List Result");
-                resultDialog.open();
+                resultDialog.setTitle("Viewing List Result");
+                Qt.callLater(() => {
+                    resultDialog.open();
+                });
             }
+        }
+
+        function onFaceDeleted() {
+            const result = faceRecognitionKernel.getDeleteResult();
+
+            const level = result["level"];
+            const message = result["message"];
+
+            messageManager.publishMessage(level, message);
+
+            resultDialog.setLevel(level);
+            resultDialog.setText(message);
+            resultDialog.setTitle("Deleting Face Result");
+            resultDialog.open();
+
+            listView.currentIndex = -1;
+            faceRecognitionKernel.viewFaceList();
+        }
+
+        function onDataSaved() {
+            const result = faceRecognitionKernel.getSaveResult();
+
+            const level = result["level"];
+            const message = result["message"];
+
+            messageManager.publishMessage(level, message);
         }
     }
 
@@ -191,10 +231,12 @@ KCM.SimpleKCM {
 
         implicitWidth: Kirigami.Units.gridUnit * 20
 
-        ColumnLayout {
+        contentItem: ColumnLayout {
             id: listIdLayout
 
-            anchors.fill: parent
+            // anchors.fill: parent
+            anchors.left: parent.left
+            anchors.right: parent.right
 
             readonly property real rowHeight: Kirigami.Units.gridUnit * 2
             readonly property real createdAtWidth: listView.width * 0.4
@@ -253,11 +295,16 @@ KCM.SimpleKCM {
                 implicitHeight: Math.min(listView.contentHeight, listIdLayout.rowHeight * 8)
                 clip: true
                 spacing: 0
+                onVisibleChanged: {
+                    if (visible) {
+                        currentIndex = -1;
+                    }
+                }
 
                 delegate: Rectangle {
                     width: listView.width
                     height: listIdLayout.rowHeight
-                    color: index % 2 === 0 ? "transparent" : Kirigami.Theme.alternateBackgroundColor
+                    color: index === listView.currentIndex ? Kirigami.Theme.highlightColor : (index % 2 === 0 ? "transparent" : Kirigami.Theme.alternateBackgroundColor)
 
                     RowLayout {
                         anchors.fill: parent
@@ -265,18 +312,27 @@ KCM.SimpleKCM {
                         anchors.rightMargin: Kirigami.Units.smallSpacing
                         spacing: 0
 
-                        Kirigami.SelectableLabel {
+                        QQC2.Label {
                             Layout.preferredWidth: listIdLayout.createdAtWidth
 
                             text: modelData.createdAt
                             horizontalAlignment: Text.AlignHCenter
+                            elide: Text.ElideRight
                         }
 
-                        Kirigami.SelectableLabel {
+                        QQC2.Label {
                             Layout.preferredWidth: listIdLayout.faceIdWidth
 
                             text: modelData.faceId
                             horizontalAlignment: Text.AlignHCenter
+                            elide: Text.ElideRight
+                        }
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            listView.currentIndex = index;
                         }
                     }
                 }
@@ -292,6 +348,7 @@ KCM.SimpleKCM {
             Rectangle {
                 Layout.fillWidth: true
                 implicitHeight: listIdLayout.rowHeight
+                visible: listView.count === 0
 
                 QQC2.Label {
                     anchors.fill: parent
@@ -299,9 +356,44 @@ KCM.SimpleKCM {
                     text: "No face ID found"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    visible: listView.count === 0
                 }
             }
+
+            RowLayout {
+                Layout.fillWidth: true
+                Layout.topMargin: Kirigami.Units.gridUnit
+
+                QQC2.Button {
+                    text: "Delete"
+                    icon.name: "edit-delete"
+
+                    enabled: listView.currentIndex !== -1
+                    onClicked: {
+                        deletePromptDialog.open();
+                    }
+                }
+            }
+        }
+    }
+
+    Kirigami.PromptDialog {
+        id: deletePromptDialog
+        anchors.centerIn: parent
+        implicitWidth: Kirigami.Units.gridUnit * 15
+
+        title: "Delete Face ID"
+        subtitle: "Delete face '%1'".arg(selectedFaceId())
+        iconName: "edit-delete"
+
+        standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+
+        onAccepted: {
+            faceRecognitionKernel.deleteFace(selectedFaceId());
+            kcm.needsSave = true;
+        }
+
+        function selectedFaceId() {
+            return listView.currentIndex !== -1 ? String(listView.model[listView.currentIndex]?.faceId ?? "") : "";
         }
     }
 
@@ -472,6 +564,7 @@ KCM.SimpleKCM {
             QQC2.Button {
                 text: "view list"
                 icon.name: "view-list-details"
+                enabled: !root.faceRecognitionKernel.busy
                 onClicked: {
                     faceRecognitionKernel.viewFaceList();
                 }

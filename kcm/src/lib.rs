@@ -60,8 +60,9 @@ pub mod qobject {
         #[qinvokable(cxx_override, cxx_virtual)]
         fn load(self: Pin<&mut Kcm>);
 
+        #[cxx_name = "startSaving"]
         #[qsignal]
-        fn saved(self: Pin<&mut Kcm>);
+        fn start_saving(self: Pin<&mut Kcm>);
 
         #[qsignal]
         fn loaded(self: Pin<&mut Kcm>);
@@ -133,7 +134,11 @@ pub mod qobject {
         type FaceRecognitionKernel = super::FaceRecognitionKernelRust;
 
         #[qinvokable]
-        fn init(self: Pin<&mut FaceRecognitionKernel>, frame_processor: *mut FrameCapturer);
+        fn init(
+            self: Pin<&mut FaceRecognitionKernel>,
+            frame_capturer: *mut FrameCapturer,
+            kcm: *mut Kcm,
+        );
 
         #[cxx_name = "loadFace"]
         #[qinvokable]
@@ -147,6 +152,14 @@ pub mod qobject {
         #[qinvokable]
         fn view_face_list(self: Pin<&mut FaceRecognitionKernel>);
 
+        #[cxx_name = "deleteFace"]
+        #[qinvokable]
+        fn delete_face(self: Pin<&mut FaceRecognitionKernel>, id: QString);
+
+        #[cxx_name = "saveData"]
+        #[qinvokable]
+        fn save_data(self: Pin<&mut FaceRecognitionKernel>);
+
         #[cxx_name = "faceLoaded"]
         #[qsignal]
         fn face_loaded(self: Pin<&mut FaceRecognitionKernel>);
@@ -159,6 +172,14 @@ pub mod qobject {
         #[qsignal]
         fn list_generated(self: Pin<&mut FaceRecognitionKernel>);
 
+        #[cxx_name = "faceDeleted"]
+        #[qsignal]
+        fn face_deleted(self: Pin<&mut FaceRecognitionKernel>);
+
+        #[cxx_name = "dataSaved"]
+        #[qsignal]
+        fn data_saved(self: Pin<&mut FaceRecognitionKernel>);
+
         #[cxx_name = "getLoadResult"]
         #[qinvokable]
         fn get_load_result(self: &FaceRecognitionKernel) -> QMap_QString_QVariant;
@@ -170,6 +191,14 @@ pub mod qobject {
         #[cxx_name = "getViewFaceListResult"]
         #[qinvokable]
         fn get_view_face_list_result(self: &FaceRecognitionKernel) -> QMap_QString_QVariant;
+
+        #[cxx_name = "getDeleteResult"]
+        #[qinvokable]
+        fn get_delete_result(self: &FaceRecognitionKernel) -> QMap_QString_QVariant;
+
+        #[cxx_name = "getSaveResult"]
+        #[qinvokable]
+        fn get_save_result(self: &FaceRecognitionKernel) -> QMap_QString_QVariant;
     }
 
     unsafe extern "RustQt" {
