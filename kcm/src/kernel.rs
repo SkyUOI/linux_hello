@@ -37,7 +37,7 @@ pub struct FaceRecognitionKernel {
     last_frame: sync::Arc<sync::Mutex<Option<image::DynamicImage>>>,
     pub busy: bool,
     result: Option<Result<result::KernelResult, error::KernelError>>,
-    match_rate: f32,
+    match_score: f32,
     config: Option<rc::Rc<cell::RefCell<config::Config>>>,
 }
 
@@ -59,7 +59,7 @@ impl qobject::FaceRecognitionKernel {
             return;
         }
         let config = rc::Rc::clone(&unsafe { &*kcm }.config);
-        self.as_mut().rust_mut().match_rate = config.borrow().kernel_config.match_rate;
+        self.as_mut().rust_mut().match_score = config.borrow().kernel_config.match_score;
         self.as_mut().rust_mut().config = Some(config);
         let kernel = match create_kernel() {
             Ok(kernel) => kernel,
@@ -296,7 +296,7 @@ impl qobject::FaceRecognitionKernel {
                 log::error!("face recognition config is not constructed");
                 return;
             };
-            config.kernel_config.match_rate = self.match_rate;
+            config.kernel_config.match_score = self.match_score;
         }
         let result = std::panic::catch_unwind(panic::AssertUnwindSafe(move || {
             kernel.lock().unwrap_or_else(|p| p.into_inner()).save_data()
@@ -358,7 +358,7 @@ impl qobject::FaceRecognitionKernel {
 
         match self.result.as_ref() {
             Some(Ok(result::KernelResult::Match(result))) => {
-                if result.score >= self.match_rate {
+                if result.score >= self.match_score {
                     map.insert(
                         "level".into(),
                         cxx_qt_lib::QVariant::from(
@@ -366,9 +366,9 @@ impl qobject::FaceRecognitionKernel {
                         ),
                     );
                     let message = format!(
-                        "Matching face '{id}' with correct rate '{score:.2}%' successfully",
+                        "Matching face '{id}' with score '{score:.2}' successfully",
                         id = result.best_id,
-                        score = result.score * 100f32
+                        score = result.score
                     );
                     log::info!("{}", crate::utils::lowercase_first_char(message.clone()));
                     map.insert(
@@ -381,9 +381,9 @@ impl qobject::FaceRecognitionKernel {
                         cxx_qt_lib::QVariant::from(&(message_manager::MessageLevel::Error as u8)),
                     );
                     let message = format!(
-                        "Matching face '{id}' with correct rate '{score:.2}%' failed",
+                        "Matching face '{id}' with score '{score:.2}' failed",
                         id = result.best_id,
-                        score = result.score * 100f32
+                        score = result.score
                     );
                     log::error!("{}", crate::utils::lowercase_first_char(message.clone()));
                     map.insert(

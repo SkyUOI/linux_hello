@@ -168,7 +168,11 @@ impl qobject::CameraManager {
         }
 
         let config = rc::Rc::clone(&unsafe { &*kcm }.config);
-
+        self.as_mut()
+            .set_mirrored(config.borrow().camera_config.mirrored);
+        self.as_mut()
+            .set_running(config.borrow().camera_config.running);
+        self.as_mut().rust_mut().config = Some(config.clone());
         if let Some(system_path) = config.borrow().camera_config.camera_system_path.as_ref() {
             self.as_mut().rust_mut().camera = Some(match Camera::new(system_path.clone()) {
                 Ok(camera) => {
@@ -181,21 +185,13 @@ impl qobject::CameraManager {
                 }
             });
         }
-        self.as_mut()
-            .set_mirrored(config.borrow().camera_config.mirrored);
-        self.as_mut()
-            .set_running(config.borrow().camera_config.running);
-        self.as_mut().rust_mut().config = Some(config);
+
         log::info!("camera manager has been load successfully");
     }
 
     pub fn save_config(&self) {
         info!("camera manager starts to save configuration");
-        let Some(mut config) = self
-            .config
-            .as_ref()
-            .map(|config| config.borrow_mut())
-        else {
+        let Some(mut config) = self.config.as_ref().map(|config| config.borrow_mut()) else {
             log::error!("camera manager cannot get configuration");
             return;
         };

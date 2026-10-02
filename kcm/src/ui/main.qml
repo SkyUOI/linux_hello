@@ -126,14 +126,15 @@ KCM.SimpleKCM {
             if (level === Kirigami.MessageType.Positive) {
                 const faceList = result["faceList"];
                 listView.model = faceList;
-                listIdDialog.open();
+                listView.currentIndex = -1;
+                Qt.callLater(() => {
+                    listIdDialog.open();
+                });
             } else {
                 resultDialog.setLevel(level);
                 resultDialog.setText(message);
                 resultDialog.setTitle("Viewing List Result");
-                Qt.callLater(() => {
-                    resultDialog.open();
-                });
+                resultDialog.open();
             }
         }
 
@@ -150,8 +151,9 @@ KCM.SimpleKCM {
             resultDialog.setTitle("Deleting Face Result");
             resultDialog.open();
 
-            listView.currentIndex = -1;
-            faceRecognitionKernel.viewFaceList();
+            Qt.callLater(() => {
+                faceRecognitionKernel.viewFaceList();
+            });
         }
 
         function onDataSaved() {
