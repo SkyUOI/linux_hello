@@ -100,7 +100,7 @@ impl kernel::FaceKernel for FaceIdKernel {
             id: ActiveValue::Set(id.clone()),
             embedding: ActiveValue::Set(embedding),
             norm: ActiveValue::Set(norm),
-            ..Default::default()
+            created_at: ActiveValue::Set(chrono::Local::now().naive_local())
         };
 
         self.runtime

@@ -22,6 +22,7 @@ sea-orm = { version = "2.0.4", features = [
 image.workspace = true
 migration = { version = "0.1.0", path = "migration" }
 jiff-chrono-conversions = "0.1.1"
+chrono = "0.4.45"
 
 [[bin]]
 name = "fetch-model"

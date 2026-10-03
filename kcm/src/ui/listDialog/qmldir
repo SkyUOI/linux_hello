@@ -1,0 +1,6 @@
+module org.kde.libkcm.listDialog
+ListDialog 1.0 ListDialog.qml
+internal DeleteDialog 1.0 DeleteDialog.qml
+internal ListContent 1.0 ListContent.qml
+internal ListHead 1.0 ListHead.qml
+internal NoFaceMessage 1.0 NoFaceMessage.qml

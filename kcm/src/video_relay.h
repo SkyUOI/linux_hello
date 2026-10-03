@@ -21,9 +21,9 @@ inline void attach(FrameCapturer* frameCapturer, QObject* sinkObject, uint32_t i
     if (sink == nullptr) {
         return;
     }
-    QFuture<void> last_future;
+    auto last_future = std::make_shared<QFuture<void>>();
 
-    QObject::connect(sink, &QVideoSink::videoFrameChanged, sink, 
+    QObject::connect(sink, &QVideoSink::videoFrameChanged, reinterpret_cast<QObject*>(frameCapturer), 
         [intervalMs, last_future, frameCapturer](const QVideoFrame &frame) mutable {
             if (not frame.isValid()) {
                 return;
@@ -61,20 +61,22 @@ inline void attach(FrameCapturer* frameCapturer, QObject* sinkObject, uint32_t i
                         int height = processedImage.height();
                         int width = processedImage.width();
                         int stride = processedImage.bytesPerLine();
-                        auto buf = std::make_shared<QByteArray>(reinterpret_cast<const char*>(processedImage.constBits()), 
-                        processedImage.sizeInBytes());
+                        // auto buf = std::make_shared<QByteArray>(reinterpret_cast<const char*>(processedImage.constBits()), 
+                        // processedImage.sizeInBytes());
                         // auto bitsStart = processedImage.constBits();
                         // auto size = processedImage.sizeInBytes();
 
-                        auto func = [frameCapturer, height, width, stride, buf]() {
+                        // auto func = [frameCapturer, height, width, stride, buf]() {
                             ::relay_frame(frameCapturer, width, 
                                 height, stride, 
-                                rust::Slice<const uint8_t>(reinterpret_cast<const uint8_t*>(buf->constData()), buf->size()));
-                        };
+                                rust::Slice<const uint8_t>(reinterpret_cast<const uint8_t*>(processedImage.constBits()), processedImage.sizeInBytes()));
+                        // };
 
-                        if (not last_future.isValid() or last_future.isFinished()) {
-                            last_future = QtConcurrent::run(func);
-                        } 
+                        // func();
+
+                        // if (not last_future->isValid() or last_future->isFinished()) {
+                        //     *last_future = QtConcurrent::run(func);
+                        // } 
 
                     }
                     break;

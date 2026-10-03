@@ -10,15 +10,21 @@ use cxx_qt_build::CppFile;
 fn main() -> anyhow::Result<()> {
     let include_dirs = kcm_include_dirs()?;
 
-    let mut builder =
-        cxx_qt_build::CxxQtBuilder::new_qml_module(cxx_qt_build::QmlModule::new("org.kde.libkcm"))
-            .file("src/lib.rs")
-            .cpp_file(CppFile::from("src/kcm_plugin.h").moc_arguments({
-                let mut args = cxx_qt_build::MocArguments::default();
-                args = args.include_paths(include_dirs.iter());
-                args
-            }))
-            .qrc("src/qml.qrc");
+    let mut builder = cxx_qt_build::CxxQtBuilder::new_qml_module(
+        cxx_qt_build::QmlModule::new("org.kde.libkcm").qml_files([
+            "src/ui/Device.qml",
+            "src/ui/MessageDisplay.qml",
+            "src/ui/ResultDialog.qml",
+            "src/ui/SavingDialog.qml",
+        ]),
+    )
+    .file("src/lib.rs")
+    .cpp_file(CppFile::from("src/kcm_plugin.h").moc_arguments({
+        let mut args = cxx_qt_build::MocArguments::default();
+        args = args.include_paths(include_dirs.iter());
+        args
+    }))
+    .qrc("src/qml.qrc");
 
     unsafe {
         builder = builder.cc_builder(|cc| {

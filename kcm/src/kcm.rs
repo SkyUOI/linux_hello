@@ -1,5 +1,3 @@
-use log::info;
-
 use crate::{config, qobject};
 use std::{cell, fs, io::Write, pin, rc};
 
@@ -8,7 +6,7 @@ pub struct Kcm {
 }
 
 impl Kcm {
-    fn save_config(&self) -> Result<(), config::ConfigError> {
+    fn save_config_impl(&self) -> Result<(), config::ConfigError> {
         let config_path =
             config::Config::get_config_path().ok_or(config::ConfigError::GetConfigPath)?;
         let config_content = toml::to_string(self.config.as_ref())?;
@@ -59,16 +57,19 @@ impl cxx_qt::Constructor<(*mut qobject::QObject, qobject::KPluginMetaData)> for 
 
 impl qobject::Kcm {
     pub fn save(mut self: pin::Pin<&mut Self>) {
-        info!("kcm starts to save configuration and data");
+        log::info!("kcm starts to save configuration and data");
         self.as_mut().start_saving();
-        if let Err(e) = self.save_config() {
-            log::error!("save configuration error: {e}");
-            return;
-        }
-        info!("configuration and data saved");
     }
 
     pub fn load(self: pin::Pin<&mut Self>) {
         self.loaded();
+    }
+
+    pub fn save_config(&self) {
+        if let Err(e) = self.save_config_impl() {
+            log::error!("save configuration error: {e}");
+            return;
+        }
+        log::info!("configuration and data saved");
     }
 }

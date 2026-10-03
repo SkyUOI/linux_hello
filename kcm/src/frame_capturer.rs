@@ -60,40 +60,46 @@ pub unsafe fn relay_frame(
         log::error!("frame processor is null");
         return;
     }
-    log::trace!(
-        "width: {width}, height: {height}, stride: {stride}, data len: {}",
-        data.len()
-    );
-    let Ok(width) = u32::try_from(width) else {
-        log::error!("width or height cannot be transferred into u32");
-        return;
-    };
-    let Ok(height) = u32::try_from(height) else {
-        log::error!("height cannot be transferred into u32");
-        return;
-    };
-    let Ok(stride) = u32::try_from(stride) else {
-        log::error!("stride cannot be transferred into u32");
-        return;
-    };
-    let mut last_frame = match unsafe { &*frame_capturer }.last_frame.lock() {
-        Ok(last_frame) => last_frame,
-        Err(e) => {
-            log::error!("last_frame has been poisoned: {e}");
+    let last_frame = unsafe { &*frame_capturer }.last_frame.clone();
+    let data = data.to_vec();
+
+    std::thread::spawn(move || {
+        let mut last_frame = match last_frame.lock() {
+            Ok(last_frame) => last_frame,
+            Err(e) => {
+                log::error!("last_frame has been poisoned: {e}");
+                return;
+            }
+        };
+        log::trace!(
+            "width: {width}, height: {height}, stride: {stride}, data len: {}",
+            data.len()
+        );
+        let Ok(width) = u32::try_from(width) else {
+            log::error!("width or height cannot be transferred into u32");
             return;
+        };
+        let Ok(height) = u32::try_from(height) else {
+            log::error!("height cannot be transferred into u32");
+            return;
+        };
+        let Ok(stride) = u32::try_from(stride) else {
+            log::error!("stride cannot be transferred into u32");
+            return;
+        };
+
+        let mut gray_image = image::GrayImage::new(width, height);
+
+        for (i, row) in (0..height as usize).zip(gray_image.rows_mut()) {
+            let row_start = i * stride as usize;
+            row.zip(&data[row_start..][..width as usize])
+                .for_each(|(pixel, &data_pixel)| *pixel = [data_pixel].into());
         }
-    };
-    let mut gray_image = image::GrayImage::new(width, height);
 
-    for (i, row) in (0..height as usize).zip(gray_image.rows_mut()) {
-        let row_start = i * stride as usize;
-        row.zip(&data[row_start..][..width as usize])
-            .for_each(|(pixel, &data_pixel)| *pixel = [data_pixel].into());
-    }
-
-    #[cfg(feature = "test")]
-    gray_image
-        .save(path::Path::new("./kcm/test_image/test.png"))
-        .unwrap();
-    *last_frame = Some(image::DynamicImage::from(gray_image))
+        #[cfg(feature = "test")]
+        gray_image
+            .save(path::Path::new("./kcm/test_image/test.png"))
+            .unwrap();
+        *last_frame = Some(image::DynamicImage::from(gray_image))
+    });
 }

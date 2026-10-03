@@ -54,6 +54,10 @@ pub mod qobject {
         #[base = KQuickConfigModule]
         type Kcm = super::KcmRust;
 
+        #[cxx_name = "saveConfig"]
+        #[qinvokable]
+        fn save_config(self: &Kcm);
+
         #[qinvokable(cxx_override, cxx_virtual)]
         fn save(self: Pin<&mut Kcm>);
 

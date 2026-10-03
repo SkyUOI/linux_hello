@@ -1583,6 +1583,7 @@ name = "face-id-kernel"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "chrono",
  "dirs 7.0.0",
  "face-recognition-api",
  "face_id",

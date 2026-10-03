@@ -1,0 +1,5 @@
+module org.kde.libkcm.signalConnections
+SignalConnections 1.0 SignalConnections.qml
+internal KcmConnections 1.0 KcmConnections.qml
+internal MessageConnections 1.0 MessageConnections.qml
+internal KernelConnections 1.0 KernelConnections.qml
