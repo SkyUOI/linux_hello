@@ -1,11 +1,11 @@
-use crate::options;
+use crate::{kcm, options};
 use std::process;
 
 pub fn run(kernel: options::Kernel, release: bool, jobs: Option<u32>) -> anyhow::Result<()> {
-    crate::build::build(kernel, release, jobs)?;
+    kcm::build::build(kernel, release, jobs)?;
     let mut run_command = process::Command::new("kcmshell6");
     run_command
-        .arg(format!("kcm_{}", crate::consts::LIB_NAME))
+        .arg(format!("kcm_{}", kcm::consts::LIB_NAME))
         .envs([
             ("QML_DISABLE_DISK_CACHE", "1".as_ref()),
             (

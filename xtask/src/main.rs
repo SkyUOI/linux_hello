@@ -1,12 +1,8 @@
 use clap::Parser;
 
-mod build;
-mod consts;
 mod directories;
-mod install;
+mod kcm;
 mod options;
-mod prepare;
-mod run;
 mod sh;
 
 fn main() -> anyhow::Result<()> {
@@ -15,10 +11,21 @@ fn main() -> anyhow::Result<()> {
 
     let args = options::Args::parse();
 
-    match args.command {
-        options::Command::Build { kernel, release, jobs } => build::build(kernel, release, jobs),
-        options::Command::Run { kernel, release , jobs} => run::run(kernel, release, jobs),
-        options::Command::Install { kernel , jobs} => install::install(kernel, jobs),
-        options::Command::Prepare { kernel , jobs} => prepare::prepare(kernel, jobs),
+    match args.package {
+        options::Package::Kcm { command } => match command {
+            options::Command::Build {
+                kernel,
+                release,
+                jobs,
+            } => kcm::build::build(kernel, release, jobs),
+            options::Command::Run {
+                kernel,
+                release,
+                jobs,
+            } => kcm::run::run(kernel, release, jobs),
+            options::Command::Install { kernel, jobs } => kcm::install::install(kernel, jobs),
+            options::Command::Prepare { kernel, jobs } => kcm::prepare::prepare(kernel, jobs),
+            options::Command::Uninstall {} => kcm::uninstall::uninstall(),
+        },
     }
 }
