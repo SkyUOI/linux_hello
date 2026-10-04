@@ -42,6 +42,7 @@ async fn main() -> anyhow::Result<()> {
         std::fs::create_dir_all(&model_path)?;
     }
     if model_path.join("2.5g_bnkps.onnx").exists().not() {
+        println!("downloading SCRFD model");
         let scrfd_path = client
             .model("RuteNL", "SCRFD-face-detection-ONNX")
             .download_file()
@@ -56,6 +57,7 @@ async fn main() -> anyhow::Result<()> {
     }
 
     if model_path.join("w600k_mbf.onnx").exists().not() {
+        println!("downloading w600k_mbf model");
         let buffalo_s_realpath = model_path.join("w600k_mbf.onnx");
         let buffalo_s_path = client
             .model("deepghs", "insightface")
@@ -78,7 +80,8 @@ async fn main() -> anyhow::Result<()> {
         );
     }
 
-    if model_path.join("genderage.onnx.onnx").exists().not() {
+    if model_path.join("genderage.onnx").exists().not() {
+        println!("downloading genderage.onnx model");
         let buffalo_s_realpath = model_path.join("genderage.onnx");
         let buffalo_s_path = client
             .model("deepghs", "insightface")

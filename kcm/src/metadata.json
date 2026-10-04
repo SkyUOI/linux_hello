@@ -1,8 +1,10 @@
 {
     "KPlugin": {
-        "Name": "KCM Linux Hello",
+        "Name": "Linux Hello",
         "Description": "for face identification",
+        "Icon": "preferences-system-login",
         "Version": "0.1.0",
+        "License": "GPL",
         "Authors": [
             {
                 "Name": "limuy"
@@ -11,9 +13,14 @@
                 "Name": "dubbyzhong"
             }
         ],
-        "Category": "faceID"
+        "Category": "System"
+    },
+    "X-KDE-ConfigModule": {
+        "kcm_name": "kcm_linuxhello"
     },
     "X-KDE-FormFactors": [
         "desktop"
-    ]
+    ],
+    "X-KDE-System-Settings-Parent-Category": "security-privacy",
+    "X-KDE-Weight": 100
 }

@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as QQC2
 import org.kde.kirigami as Kirigami
-import org.kde.libkcm
+import org.kde.linuxhello
 
 QQC2.Dialog {
     id: root
@@ -80,7 +80,7 @@ QQC2.Dialog {
             implicitHeight: 2
             color: Kirigami.Theme.disabledTextColor
         }
-        
+
         NoFaceMessage {
             id: noFaceMessage
             Layout.fillWidth: true

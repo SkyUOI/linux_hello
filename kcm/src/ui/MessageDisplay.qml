@@ -1,6 +1,6 @@
 import org.kde.kirigami as Kirigami
 import QtQuick.Layouts
-import org.kde.libkcm
+import org.kde.linuxhello
 
 Kirigami.InlineMessage {
     id: root
@@ -18,6 +18,4 @@ Kirigami.InlineMessage {
             return level;
         }
     }
-
-
 }

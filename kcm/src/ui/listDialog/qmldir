@@ -1,4 +1,4 @@
-module org.kde.libkcm.listDialog
+module org.kde.linuxhello.listDialog
 ListDialog 1.0 ListDialog.qml
 internal DeleteDialog 1.0 DeleteDialog.qml
 internal ListContent 1.0 ListContent.qml

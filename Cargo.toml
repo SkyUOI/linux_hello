@@ -7,7 +7,8 @@ members = [
     "kcm",
     "kcm/face-id-kernel",
     "kcm/face-recognition-api",
-    "kcm/face-id-kernel/migration",
+    "kcm/face-id-kernel/migration", 
+    "xtask"
 ]
 
 [workspace.package]

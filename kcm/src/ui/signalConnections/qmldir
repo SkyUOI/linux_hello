@@ -1,4 +1,4 @@
-module org.kde.libkcm.signalConnections
+module org.kde.linuxhello.signalConnections
 SignalConnections 1.0 SignalConnections.qml
 internal KcmConnections 1.0 KcmConnections.qml
 internal MessageConnections 1.0 MessageConnections.qml

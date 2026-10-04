@@ -1,6 +1,6 @@
 import QtQuick
-import org.kde.libkcm
-import org.kde.libkcm.camera
+import org.kde.linuxhello
+import org.kde.linuxhello.camera
 
 Connections {
     id: root

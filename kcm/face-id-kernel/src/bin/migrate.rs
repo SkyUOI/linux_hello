@@ -15,6 +15,6 @@ pub fn main() {
     process::Command::new("sea-orm-cli")
         .arg("migrate")
         .args(std::env::args().skip(1))
-        .output()
+        .status()
         .unwrap();
 }

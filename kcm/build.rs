@@ -11,7 +11,7 @@ fn main() -> anyhow::Result<()> {
     let include_dirs = kcm_include_dirs()?;
 
     let mut builder = cxx_qt_build::CxxQtBuilder::new_qml_module(
-        cxx_qt_build::QmlModule::new("org.kde.libkcm").qml_files([
+        cxx_qt_build::QmlModule::new("org.kde.linuxhello").qml_files([
             "src/ui/Device.qml",
             "src/ui/MessageDisplay.qml",
             "src/ui/ResultDialog.qml",

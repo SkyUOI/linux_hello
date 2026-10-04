@@ -1,7 +1,7 @@
 import QtQuick
 import QtMultimedia
 import org.kde.kirigami as Kirigami
-import org.kde.libkcm
+import org.kde.linuxhello
 
 Rectangle {
     id: root

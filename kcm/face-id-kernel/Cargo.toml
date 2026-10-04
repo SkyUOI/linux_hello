@@ -25,8 +25,8 @@ jiff-chrono-conversions = "0.1.1"
 chrono = "0.4.45"
 
 [[bin]]
-name = "fetch-model"
-path = "src/bin/fetch_model.rs"
+name = "fetch-models"
+path = "src/bin/fetch_models.rs"
 
 [[bin]]
 name = "migrate"

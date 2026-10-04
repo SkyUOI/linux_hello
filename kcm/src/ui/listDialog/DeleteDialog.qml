@@ -1,6 +1,6 @@
 import QtQuick
 import org.kde.kirigami as Kirigami
-import org.kde.libkcm
+import org.kde.linuxhello
 
 Kirigami.PromptDialog {
     id: root

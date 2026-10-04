@@ -1,7 +1,7 @@
 import QtQuick.Layouts
 import QtQuick.Controls as QQC2
 import org.kde.kirigami as Kirigami
-import org.kde.libkcm
+import org.kde.linuxhello
 
 Kirigami.FormLayout {
     required property CameraManager manager

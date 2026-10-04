@@ -74,9 +74,9 @@ impl qobject::LogManager {
             println!("fern chains log file: {}", log_path.display());
             dispatch = dispatch.chain(log_file);
         }
-        dispatch
-            .apply()
-            .expect("applying fern to config log outputs");
+        if let Err(_) = dispatch.apply() {
+            log::warn!("log manager has been loaded, keep the existing logger");
+        }
         self.as_mut().rust_mut().config = Some(config);
         log::info!("log manager has been load successfully");
     }

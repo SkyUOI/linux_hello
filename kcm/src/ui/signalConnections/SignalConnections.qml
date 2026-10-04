@@ -1,5 +1,5 @@
 import QtQuick
-import org.kde.libkcm
+import org.kde.linuxhello
 import org.kde.kirigami as Kirigami
 
 QtObject {

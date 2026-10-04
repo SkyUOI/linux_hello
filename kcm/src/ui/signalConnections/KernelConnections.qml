@@ -1,7 +1,7 @@
 import QtQuick
-import org.kde.libkcm
+import org.kde.linuxhello
 import org.kde.kirigami as Kirigami
-import org.kde.libkcm.listDialog
+import org.kde.linuxhello.listDialog
 
 Connections {
     id: root

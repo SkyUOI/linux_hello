@@ -1,6 +1,6 @@
 import QtQuick.Layouts
 import QtQuick.Controls as QQC2
-import org.kde.libkcm
+import org.kde.linuxhello
 import org.kde.kirigami as Kirigami
 
 RowLayout {

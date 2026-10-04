@@ -1,6 +1,6 @@
 import QtQuick
 import QtMultimedia
-import org.kde.libkcm
+import org.kde.linuxhello
 
 MediaDevices {
     id: root

@@ -1,12 +1,12 @@
 import QtQuick
 
-import org.kde.libkcm
+import org.kde.linuxhello
 
 Connections {
     id: root
 
     required property MessageManager message
-    
+
     property MessageDisplay messageDisplay
 
     target: message
