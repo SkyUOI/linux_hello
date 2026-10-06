@@ -1,5 +1,0 @@
-module org.kde.linuxhello.camera
-Camera 1.0 Camera.qml
-internal Preview 1.0 Preview.qml
-internal Capture 1.0 Capture.qml
-internal Controls 1.0 Controls.qml

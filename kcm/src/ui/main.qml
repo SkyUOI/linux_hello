@@ -3,12 +3,7 @@ import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.kcmutils as KCM
 import org.kde.kirigami as Kirigami
-import QtMultimedia
 import org.kde.linuxhello
-import org.kde.linuxhello.listDialog
-import org.kde.linuxhello.camera
-import org.kde.linuxhello.buttons
-import org.kde.linuxhello.signalConnections
 
 KCM.SimpleKCM {
     id: root

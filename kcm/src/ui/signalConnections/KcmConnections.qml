@@ -1,6 +1,5 @@
 import QtQuick
 import org.kde.linuxhello
-import org.kde.linuxhello.camera
 
 Connections {
     id: root

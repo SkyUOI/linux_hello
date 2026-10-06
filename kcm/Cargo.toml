@@ -28,6 +28,7 @@ face-id-kernel = { version = "0.1.0", path = "face-id-kernel", optional = true }
 [build-dependencies]
 cmake-package = "0.2.0"
 cxx-qt-build = "0.10.0"
+qt-build-utils = "0.10"
 anyhow.workspace = true
 
 [features]

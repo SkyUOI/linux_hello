@@ -2647,6 +2647,7 @@ dependencies = [
  "image",
  "jiff",
  "log",
+ "qt-build-utils",
  "serde",
  "thiserror 2.0.21",
  "toml",

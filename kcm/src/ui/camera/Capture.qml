@@ -1,8 +1,11 @@
-import QtMultimedia
+// QtMultimedia is namespaced because the plain `Camera` type name would be
+// shadowed by the Camera.qml file in the same directory, which QML's implicit
+// directory import resolves with higher priority than explicit imports.
+import QtMultimedia as MM
 import org.kde.linuxhello
 import org.kde.kirigami as Kirigami
 
-CaptureSession {
+MM.CaptureSession {
     id: root
 
     required property CameraManager manager
@@ -11,7 +14,7 @@ CaptureSession {
 
     property alias cameraDevice: camera.cameraDevice
 
-    camera: Camera {
+    camera: MM.Camera {
         id: camera
         onCameraDeviceChanged: {
             manager.setDevice(cameraDevice.id);
