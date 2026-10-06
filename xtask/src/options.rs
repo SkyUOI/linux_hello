@@ -2,7 +2,7 @@
 #[command(
     name = "xtask",
     override_usage = "cargo xtask <PACKAGE> <SUBCOMMAND> [OPTIONS]",
-    subcommand_help_heading = "Packages",
+    subcommand_help_heading = "Package",
     disable_help_subcommand = true
 )]
 pub struct Args {

@@ -32,16 +32,16 @@ cargo install sea-orm-cli
 If you are the first time to build KCM Linux Hello, you need to run the following command at the root of the project:
 
 ```bash
-cargo xtask prepare --kernel <KERNEL>
+cargo xtask kcm prepare --kernel <KERNEL>
 ```
 
 Then you can build or run KCM Linux Hello by running the following command:
 
 ```bash
 # build
-cargo xtask build --kernel <KERNEL>
+cargo xtask kcm build --kernel <KERNEL>
 # run
-cargo xtask run --kernel <KERNEL>
+cargo xtask kcm run --kernel <KERNEL>
 ```
 
 ### Install
@@ -49,7 +49,7 @@ cargo xtask run --kernel <KERNEL>
 If you want to install it to the system settings, you can run the following command:
 
 ```bash
-cargo xtask install --kernel <KERNEL>
+cargo xtask kcm install --kernel <KERNEL>
 ```
 
-More details about xtask can be seen through `cargo xtask --help`.
+More details about xtask can be seen through `cargo xtask kcm --help`.
