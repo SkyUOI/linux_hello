@@ -30,24 +30,29 @@ fn qml_modules_export_dir() -> PathBuf {
     if let Ok(dir) = std::env::var("CXX_QT_EXPORT_DIR") {
         return PathBuf::from(dir).join("qml_modules");
     }
-    let target_dir = std::env::var("CARGO_TARGET_DIR").map(PathBuf::from).unwrap_or_else(|_| {
-        // Walk up from OUT_DIR (= <target>/debug/build/<crate>-<hash>/out) to the
-        // target directory, the same way cxx-qt-build detects it.
-        let out_dir = PathBuf::from(
-            std::env::var("OUT_DIR").expect("env 'OUT_DIR' not found"),
-        );
-        let mut dir = out_dir.clone();
-        while dir.pop() {
-            if dir.join(".rustc_info.json").exists()
-                || dir.join("CACHEDIR.TAG").exists()
-                || dir.file_name().is_some_and(|name| name == "target")
-                    && dir.parent().is_some_and(|parent| parent.join("Cargo.toml").exists())
-            {
-                return dir;
+    let target_dir = std::env::var("CARGO_TARGET_DIR")
+        .map(PathBuf::from)
+        .unwrap_or_else(|_| {
+            // Walk up from OUT_DIR (= <target>/debug/build/<crate>-<hash>/out) to the
+            // target directory, the same way cxx-qt-build detects it.
+            let out_dir = PathBuf::from(std::env::var("OUT_DIR").expect("env 'OUT_DIR' not found"));
+            let mut dir = out_dir.clone();
+            while dir.pop() {
+                if dir.join(".rustc_info.json").exists()
+                    || dir.join("CACHEDIR.TAG").exists()
+                    || dir.file_name().is_some_and(|name| name == "target")
+                        && dir
+                            .parent()
+                            .is_some_and(|parent| parent.join("Cargo.toml").exists())
+                {
+                    return dir;
+                }
             }
-        }
-        panic!("Could not locate the cargo target directory from {}", out_dir.display());
-    });
+            panic!(
+                "Could not locate the cargo target directory from {}",
+                out_dir.display()
+            );
+        });
     target_dir.join("cxxqt").join("qml_modules")
 }
 
@@ -60,11 +65,10 @@ fn qml_modules_export_dir() -> PathBuf {
 /// parse, and it lacks the `importPaths` entry that qmlls needs to resolve
 /// `org.kde.linuxhello` without CMake build information.
 fn ensure_qmlls_ini() {
-    let ini_path = Path::new(&std::env::var("CARGO_MANIFEST_DIR").unwrap())
-        .join(".qmlls.ini");
+    let ini_path = Path::new(&std::env::var("CARGO_MANIFEST_DIR").unwrap()).join(".qmlls.ini");
     let modules_dir = qml_modules_export_dir();
     let contents = format!(
-        "[General]\nbuildDir=\"{dir}\"\nno-cmake-calls=true\nimportPaths=\"{dir},/usr/lib/qt6/qml\"\n",
+        "[General]\nbuildDir=\"{dir}\"\nno-cmake-calls=true\nimportPaths=\"{dir}:/usr/lib/qt6/qml\"\n",
         dir = modules_dir.display(),
     );
 
@@ -104,11 +108,13 @@ fn main() -> anyhow::Result<()> {
     // The KCM framework loads the entry point from
     // qrc:/kcm/<kcm_name>/main.qml (see metadata.json), which is outside
     // the module's own qrc prefix, so expose main.qml under that URL.
-    .qrc_resources(QResources::new().resource(
-        QResource::new()
-            .prefix("/kcm/kcm_linuxhello")
-            .file(QResourceFile::new("src/ui/main.qml").alias("main.qml")),
-    ));
+    .qrc_resources(
+        QResources::new().resource(
+            QResource::new()
+                .prefix("/kcm/kcm_linuxhello")
+                .file(QResourceFile::new("src/ui/main.qml").alias("main.qml")),
+        ),
+    );
 
     unsafe {
         builder = builder.cc_builder(|cc| {
